@@ -9,6 +9,7 @@ import Articles from './articles/articles'
 import SignIn from './sign-in/sign-in'
 import SignUp from './sign-up/sign-up'
 import YourCards from './your-cards/your-cards'
+import Article from './article/article'
 
 class App extends React.Component {
   constructor(props){
@@ -53,7 +54,7 @@ class App extends React.Component {
           component = {CardRecommender}
         />
         <Route
-          path = '/articles'
+          exact path = '/articles'
           component = {Articles}
         />
         <Route
@@ -67,6 +68,10 @@ class App extends React.Component {
         <Route
           path = '/sign-up'
           component = {SignUp}
+        />
+        <Route
+          path = '/articles/:id'
+          component = {Article}
         />
       </RecommenderContext.Provider>
     )
