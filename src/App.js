@@ -23,7 +23,10 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    this.setState({articles:STORE.articles})
+    this.setState({
+      articles:STORE.articles,
+      userCards:STORE.userCards
+    })
   }
 
   render(){
