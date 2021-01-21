@@ -1,7 +1,7 @@
 import React from 'react';
 
 const RecommenderContext = React.createContext({
-  signedIn: false,
+  isSignedIn: false,
   theme: 'light',
   articles: [],
   userCards: [],

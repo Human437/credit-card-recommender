@@ -15,7 +15,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state ={
-      signedIn: false,
+      isSignedIn: false,
       theme: 'light',
       articles: [],
       userCards: [],
@@ -31,7 +31,7 @@ class App extends React.Component {
     return(
       <RecommenderContext.Provider
         value = {{
-          signedIn:this.state.signedIn,
+          isSignedIn:this.state.isSignedIn,
           theme: this.state.theme,
           articles: this.state.articles,
           userCards: this.state.userCards,
