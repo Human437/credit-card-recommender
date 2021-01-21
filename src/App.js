@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom'
 import './App.css';
+import STORE from './dummy-store'
 import RecommenderContext from './recommenderContext'
 import HomePage from './home-page/home-page'
 import CardRecommender from './card-recommender/card-recommender'
@@ -14,16 +15,25 @@ class App extends React.Component {
     super(props);
     this.state ={
       signedIn: false,
-      theme: 'dark',
+      theme: 'light',
+      articles: [],
+      userCards: [],
     }
   }
 
+  componentDidMount(){
+    this.setState({articles:STORE.articles})
+  }
+
   render(){
+    document.getElementById('root').className = this.state.theme
     return(
       <RecommenderContext.Provider
         value = {{
           signedIn:this.state.signedIn,
           theme: this.state.theme,
+          articles: this.state.articles,
+          userCards: this.state.userCards,
         }}
       >
         <nav role="navigation">
