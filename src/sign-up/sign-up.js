@@ -16,6 +16,10 @@ export default class SignUp extends React.Component{
       password: {
         value: '',
         touched: false,
+      },
+      confirmPassword: {
+        value: '',
+        touched: false,
       }
     }
   }
@@ -28,6 +32,10 @@ export default class SignUp extends React.Component{
 
   updatePassword(password){
     this.setState({password:{value:password,touched:true}})
+  }
+
+  updateConfirmPassword(confirmPassword){
+    this.setState({confirmPassword:{value:confirmPassword,touched:true}})
   }
 
   validateEmail(){
@@ -47,6 +55,14 @@ export default class SignUp extends React.Component{
       return 'Password cannot be your email'
     }else if(!validator.isStrongPassword(password)){
       return 'Password does not meet the above requirements'
+    }
+  }
+
+  validateConfirmPassword(){
+    const password = this.state.password.value.trim();
+    const confirmPassword = this.state.confirmPassword.value.trim();
+    if(password !== confirmPassword){
+      return 'Passwords do not match'
     }
   }
 
@@ -96,11 +112,24 @@ export default class SignUp extends React.Component{
             />
             {this.state.password.touched && (<ValidationError message = {this.validatePassword()}/>)}
           </div>
+          <div>
+            <label for='confirm-password'>Confirm Password</label>
+            <br/>
+            <input 
+                type="password" 
+                name='confirm-password' 
+                id='confirm-password'
+                placeholder='Reenter your password'
+                onChange={e=>this.updateConfirmPassword(e.target.value)}
+            />
+            {this.state.confirmPassword.touched && (<ValidationError message = {this.validateConfirmPassword()}/>)}
+          </div>
           <button 
             type='submit'
             disabled={
               this.validateEmail()||
-              this.validatePassword
+              this.validatePassword()||
+              this.validateConfirmPassword()
             }
           >
             Sign Up
