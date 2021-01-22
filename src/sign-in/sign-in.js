@@ -4,6 +4,7 @@ import RecommenderContext from './../recommenderContext'
 import bcrypt from 'bcryptjs'
 import validator from 'validator'
 import ValidationError from './../validationError'
+import STORE from './../dummy-store'
 
 export default class SignIn extends React.Component{
   constructor(props){
@@ -17,17 +18,19 @@ export default class SignIn extends React.Component{
         value: '',
         touched: false,
       },
+      isEmailInDb:true,
+      isPasswordCorrect:true,
     }
   }
 
   static contextType = RecommenderContext;
 
   updateEmail(email){
-    this.setState({email:{value:email,touched:true}})
+    this.setState({email:{value:email,touched:true},isEmailInDb:true})
   }
 
   updatePassword(password){
-    this.setState({password:{value:password,touched:true}})
+    this.setState({password:{value:password,touched:true},isPasswordCorrect:true})
   }
 
   validateEmail(){
@@ -46,10 +49,35 @@ export default class SignIn extends React.Component{
     }
   }
 
+  handleSubmit(event){
+    event.preventDefault()
+    // First check to see if the email is associated with any account
+    // 2nd check to see if the correct password is provided
+    const user = STORE.users.find(user =>(Object.values(user).includes(this.state.email.value)))
+    if (typeof user !== 'undefined'){
+      const hash = user.hashedPassword
+      const enteredPassword = this.state.password.value.trim();
+      bcrypt.compare(enteredPassword, hash, (err, res) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        if(res){
+          //Route to user cards l8r
+          alert('You have successfully signed in')
+        }else{
+          this.setState({isPasswordCorrect:false})
+        }
+      })
+    }else{
+      this.setState({isEmailInDb:false})
+    }
+  }
+
   render(){
     return(
       <>
-        <form className='signup-form'>
+        <form className='signup-form' onSubmit={e=>{this.handleSubmit(e)}}>
           <div>
             <label htmlFor="email">Email</label>
             <br/>
@@ -61,9 +89,10 @@ export default class SignIn extends React.Component{
               onChange={e=>this.updateEmail(e.target.value)}
             />
             {this.state.email.touched && (<ValidationError message = {this.validateEmail()}/>)}
+            {!this.state.isEmailInDb && (<ValidationError message = 'The email entered is not associated with any account'/>)}
           </div>
           <div>
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <br/>
             <input 
               type="password" 
@@ -73,6 +102,7 @@ export default class SignIn extends React.Component{
               onChange={e=>this.updatePassword(e.target.value)}
             />
             {this.state.password.touched && (<ValidationError message = {this.validatePassword()}/>)}
+            {!this.state.isPasswordCorrect && (<ValidationError message = "The password entered is incorrect"/>)}
           </div>
           <button 
             type='submit'
