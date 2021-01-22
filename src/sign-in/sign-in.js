@@ -74,7 +74,15 @@ export default class SignIn extends React.Component{
             />
             {this.state.password.touched && (<ValidationError message = {this.validatePassword()}/>)}
           </div>
-          <button type='submit'>Sign In</button>
+          <button 
+            type='submit'
+            disabled={
+              this.validateEmail()||
+              this.validatePassword()
+            }
+          >
+            Sign In
+          </button>
         </form>
       </>
     )
