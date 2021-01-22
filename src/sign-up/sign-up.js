@@ -43,15 +43,33 @@ export default class SignUp extends React.Component{
     const password = this.state.password.value.trim();
     if(password.length === 0){
       return 'Password is required'
+    }else if(password === this.state.email.value.trim()){
+      return 'Password cannot be your email'
     }else if(!validator.isStrongPassword(password)){
       return 'Password does not meet the above requirements'
     }
   }
 
+  handleSubmit(event){
+    event.preventDefault();
+    const email = this.state.email.value.trim()
+    const password = this.state.password.value.trim()
+    const rounds = 10; // number of salt rounds, by default its 10
+    bcrypt.hash(password, rounds, (err, hash) => {
+      if (err) {
+        console.error(err)
+        return
+      }
+      console.log(email)
+      console.log(hash)
+    })
+    alert('Email and password successfully stored. ***No info has actually been stored, just a test to ensure the submit works***')
+  }
+
   render(){
     return(
       <>
-        <form class='signup-form'>
+        <form class='signup-form' onSubmit={e=>this.handleSubmit(e)}>
           <div>
             <label for="email">Email</label>
             <br/>
