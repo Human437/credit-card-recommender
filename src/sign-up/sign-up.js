@@ -85,9 +85,9 @@ export default class SignUp extends React.Component{
   render(){
     return(
       <>
-        <form class='signup-form' onSubmit={e=>this.handleSubmit(e)}>
+        <form className='signup-form' onSubmit={e=>this.handleSubmit(e)}>
           <div>
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <br/>
             <input 
               type="text" 
@@ -99,9 +99,9 @@ export default class SignUp extends React.Component{
             {this.state.email.touched && (<ValidationError message = {this.validateEmail()}/>)}
           </div>
           <div>
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <br></br>
-            <label for="password">Password must be at least 8 characters containing atleast 1 lowercase, 1 uppercase, 1 number, and 1 symbol</label>
+            <label htmlFor="password">Password must be at least 8 characters containing atleast 1 lowercase, 1 uppercase, 1 number, and 1 symbol</label>
             <br/>
             <input 
               type="password" 
@@ -113,7 +113,7 @@ export default class SignUp extends React.Component{
             {this.state.password.touched && (<ValidationError message = {this.validatePassword()}/>)}
           </div>
           <div>
-            <label for='confirm-password'>Confirm Password</label>
+            <label htmlFor='confirm-password'>Confirm Password</label>
             <br/>
             <input 
                 type="password" 
