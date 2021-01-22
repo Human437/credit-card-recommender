@@ -51,17 +51,23 @@ export default {
     {
       "id":1,
       "email":"hwpyxoutfugfqbusvz@twzhhq.com",
-      "hashedPassword":"aB1!bnmv"
+      "hashedPassword":"$2a$10$l1mqfAFPUolxGgJKL5tXHu4PUSoBNoD0JlM45RsBcaIcWkPa2UD0C"
+      // Only use unhashedPassword for testing purposes
+      // unhashedPassword: aB1!bnmv
     },
     {
       "id":2,
       "email":"2hwpyxoutfugfqbusvz@twzhhq.com",
-      "hashedPassword":"aB2!bnmv"
+      "hashedPassword":"$2a$10$5kOG/hdDJJB8xRNDaT9jbuSYfKc3rWtIFj.zdCLF45Z1E61MGvsYC"
+      // Only use unhashedPassword for testing purposes
+      // unhashedPassword: aB2!bnmv
     },
     {
       "id":3,
       "email":"3hwpyxoutfugfqbusvz@twzhhq.com",
-      "hashedPassword":"aB3!bnmv"
+      "hashedPassword":"$2a$10$52IFOba30w8yQUEF3wfqPOy3hq31ujasIr0cQu6RFcD0GURuZE4wi"
+      // Only use unhashedPassword for testing purposes
+      // unhashedPassword: aB3!bnmv
     },
   ]
 }
