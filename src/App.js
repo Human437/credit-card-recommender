@@ -22,6 +22,7 @@ class App extends React.Component {
       articles: [],
       availableCards: [],
       userCards: [],
+      userId: null,
     }
   }
 
@@ -36,6 +37,10 @@ class App extends React.Component {
     this.setState({isSignedIn:true})
   }
 
+  updateUserId = (id) => {
+    this.setState({userId:id})
+  }
+
   render(){
     document.getElementById('root').className = this.state.theme
     return(
@@ -46,6 +51,8 @@ class App extends React.Component {
           articles: this.state.articles,
           availableCards: this.state.availableCards,
           userSignedIn: this.userSignedIn,
+          userCards: this.state.userCards,
+          updateUserId: this.updateUserId
         }}
       >
         <nav role="navigation">

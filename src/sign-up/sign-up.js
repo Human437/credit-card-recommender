@@ -81,6 +81,14 @@ export default class SignUp extends React.Component{
     })
     alert('Email and password successfully stored. ***No info has actually been stored, just a test to ensure the submit works***')
     this.context.userSignedIn()
+    if (this.context.userCards.length === 0){
+      this.props.history.push(`/card-recommender`)
+    }else{
+      // Fetch the user id that was just created
+      const userId = 3; // Let userId be 3 for testing purposes
+      this.context.updateUserId(userId);
+      this.props.history.push(`/your-cards/${userId}`)
+    }
   }
 
   render(){
