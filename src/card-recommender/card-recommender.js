@@ -65,11 +65,11 @@ export default class CardRecommender extends React.Component{
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">What are you trying to optimize htmlFor?</label>
-            <p>Points or cash back. If cash back is selected, cards used solely htmlFor travel will not be recommended.</p><br/>
-            <input type="radio" id="yesPoints" name='Points' value={true}/>
-            <label htmlFor="yesPoints">Points</label>
-            <input type="radio" id="noStudent" name="Points" value={false}/>
-            <label htmlFor="noPoints">Cash Back</label><br/>
+            <p>Points or cash back. If cash back is selected, cards used solely for travel will not be recommended.</p><br/>
+            <select value={this.state.points.value} onChange={this.state.handlePoints}>
+              <option value={true}>Points</option>
+              <option value={false}>Cash Back</option>
+            </select>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">How many credit cards do you currently have?</label>
@@ -89,24 +89,24 @@ export default class CardRecommender extends React.Component{
           </section>
           <section className="form-section overview-section">
             <label htmlFor="AmexAccount">Have you opened any acounts with American express in the pass?</label><br/>
-            <input type="radio" id="yesAmex" name="AmexAccount" value={true}/>
-            <label htmlFor="yesAmex">Yes</label>
-            <input type="radio" id="noAmex" name="AmexAccount" value={false}/>
-            <label htmlFor="noAmex">No</label><br/>
+            <select value={this.state.openedAmex.value} onChange={this.state.handleAmex}>
+              <option value={true}>Yes</option>
+              <option value={false}>No</option>
+            </select>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">Are you a student?</label><br/>
-            <input type="radio" id="yesStudent" name='Student' value={true}/>
-            <label htmlFor="yesStudent">Yes</label>
-            <input type="radio" id="noStudent" name="Student" value={false}/>
-            <label htmlFor="noStudent">No</label><br/>
+            <select value={this.state.isStudent.value} onChange={this.state.handleStudent}>
+              <option value={true}>Yes</option>
+              <option value={false}>No</option>
+            </select>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">Are there any big upcoming expenses?</label><br/>
-            <input type="radio" id="yesBigUpcomingExpense" name='BigUpcomingExpense' value={true}/>
-            <label htmlFor="yesBigUpcomingExpense">Yes</label>
-            <input type="radio" id="noStudent" name="BigUpcomingExpense" value={false}/>
-            <label htmlFor="noBigUpcomingExpense">No</label><br/>
+            <select value={this.state.bigUpcomingExpenses.value} onChange={this.state.handleBUE}>
+              <option value={true}>Yes</option>
+              <option value={false}>No</option>
+            </select>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="lastHardInquiry">When was your last hard inquiry?</label>
