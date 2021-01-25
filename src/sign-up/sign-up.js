@@ -4,6 +4,7 @@ import RecommenderContext from './../recommenderContext'
 import ValidationError from './../validationError'
 import bcrypt from 'bcryptjs'
 import validator from 'validator';
+import STORE from './../dummy-store'
 
 export default class SignUp extends React.Component{
   constructor(props){
@@ -20,14 +21,15 @@ export default class SignUp extends React.Component{
       confirmPassword: {
         value: '',
         touched: false,
-      }
+      },
+      isEmailInDb:false,
     }
   }
 
   static contextType = RecommenderContext;
 
   updateEmail(email){
-    this.setState({email:{value:email,touched:true}})
+    this.setState({email:{value:email,touched:true},isEmailInDb:false})
   }
 
   updatePassword(password){
@@ -69,25 +71,31 @@ export default class SignUp extends React.Component{
   handleSubmit(event){
     event.preventDefault();
     const email = this.state.email.value.trim()
-    const password = this.state.password.value.trim()
-    const rounds = 10; // number of salt rounds, by default its 10
-    bcrypt.hash(password, rounds, (err, hash) => {
-      if (err) {
-        console.error(err)
-        return
-      }
-      console.log(email)
-      console.log(hash)
-    })
-    alert('Email and password successfully stored. ***No info has actually been stored, just a test to ensure the submit works***')
-    this.context.userSignedIn()
-    if (this.context.userCards.length === 0){
-      this.props.history.push(`/card-recommender`)
+    // Check if the provided email is associated with another account
+    const user = STORE.users.find(user =>(Object.values(user).includes(email)))
+    if (typeof user !== 'undefined'){
+      this.setState({isEmailInDb:true})
     }else{
-      // Fetch the user id that was just created
-      const userId = 3; // Let userId be 3 for testing purposes
-      this.context.updateUserId(userId);
-      this.props.history.push(`/your-cards/${userId}`)
+      const password = this.state.password.value.trim()
+      const rounds = 10; // number of salt rounds, by default its 10
+      bcrypt.hash(password, rounds, (err, hash) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        console.log(email)
+        console.log(hash)
+      })
+      alert('Email and password successfully stored. ***No info has actually been stored, just a test to ensure the submit works***')
+      this.context.userSignedIn()
+      if (this.context.userCards.length === 0){
+        this.props.history.push(`/card-recommender`)
+      }else{
+        // Fetch the user id that was just created
+        const userId = 3; // Let userId be 3 for testing purposes
+        this.context.updateUserId(userId);
+        this.props.history.push(`/your-cards/${userId}`)
+      }
     }
   }
 
@@ -106,6 +114,7 @@ export default class SignUp extends React.Component{
               onChange={e=>this.updateEmail(e.target.value)}
             />
             {this.state.email.touched && (<ValidationError message = {this.validateEmail()}/>)}
+            {this.state.isEmailInDb && (<ValidationError message = 'The email entered is already associated with another account'/>)}
           </div>
           <div>
             <label htmlFor="password">Password</label>
