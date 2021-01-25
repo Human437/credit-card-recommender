@@ -11,6 +11,7 @@ import SignUp from './sign-up/sign-up'
 import YourCards from './your-cards/your-cards'
 import Article from './article/article'
 import Card from './card/card'
+import ProtectedYourCards from './protectedRoutes/protectedYourCards'
 
 class App extends React.Component {
   constructor(props){
@@ -20,6 +21,7 @@ class App extends React.Component {
       theme: 'light',
       articles: [],
       availableCards: [],
+      userCards: [],
     }
   }
 
@@ -50,7 +52,7 @@ class App extends React.Component {
           <Link to="/">Home</Link>
           <Link to= '/card-recommender'>Card Recommendation Tool</Link>
           <Link to= '/articles'>View Articles</Link>
-          <Link to= '/your-cards'>View Your Cards</Link>
+          <Link to= '/your-cards/:id'>View Your Cards</Link>
           <button><Link to="/sign-in">Sign In</Link></button>
           <button><Link to="/sign-up">Sign Up</Link></button>
         </nav>
@@ -66,9 +68,9 @@ class App extends React.Component {
           exact path = '/articles'
           component = {Articles}
         />
-        <Route
-          exact path = '/your-cards'
-          component = {YourCards}
+        <ProtectedYourCards 
+          path='/your-cards/:id' 
+          component={YourCards}
         />
         <Route 
           path = '/sign-in'
@@ -83,7 +85,7 @@ class App extends React.Component {
           component = {Article}
         />
         <Route
-          path = '/your-cards/:id'
+          path = '/cards/:id'
           component = {Card}
         />
       </RecommenderContext.Provider>

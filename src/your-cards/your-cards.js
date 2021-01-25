@@ -22,7 +22,7 @@ export default class YourCards extends React.Component{
             return(
               <li key = {availableCard.id} id = {availableCard.id}>
                 <Link
-                  to = {`/your-cards/${availableCard.id}`}
+                  to = {`/cards/${availableCard.id}`}
                 >
                   {availableCard.title}
                 </Link>

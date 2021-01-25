@@ -51,21 +51,32 @@ export default {
     {
       "id":1,
       "email":"hwpyxoutfugfqbusvz@twzhhq.com",
-      "hashedPassword":"$2a$10$l1mqfAFPUolxGgJKL5tXHu4PUSoBNoD0JlM45RsBcaIcWkPa2UD0C"
+      "hashedPassword":"$2a$10$l1mqfAFPUolxGgJKL5tXHu4PUSoBNoD0JlM45RsBcaIcWkPa2UD0C",
+      "userCards":[1,2]
       // Only use unhashedPassword for testing purposes
       // unhashedPassword: aB1!bnmv
     },
     {
       "id":2,
       "email":"2hwpyxoutfugfqbusvz@twzhhq.com",
-      "hashedPassword":"$2a$10$5kOG/hdDJJB8xRNDaT9jbuSYfKc3rWtIFj.zdCLF45Z1E61MGvsYC"
+      "hashedPassword":"$2a$10$5kOG/hdDJJB8xRNDaT9jbuSYfKc3rWtIFj.zdCLF45Z1E61MGvsYC",
+      "userCards":[1,2,3]
       // Only use unhashedPassword for testing purposes
       // unhashedPassword: aB2!bnmv
     },
     {
       "id":3,
       "email":"3hwpyxoutfugfqbusvz@twzhhq.com",
-      "hashedPassword":"$2a$10$52IFOba30w8yQUEF3wfqPOy3hq31ujasIr0cQu6RFcD0GURuZE4wi"
+      "hashedPassword":"$2a$10$52IFOba30w8yQUEF3wfqPOy3hq31ujasIr0cQu6RFcD0GURuZE4wi",
+      "userCards":[1]
+      // Only use unhashedPassword for testing purposes
+      // unhashedPassword: aB3!bnmv
+    },
+    {
+      "id":4,
+      "email":"4hwpyxoutfugfqbusvz@twzhhq.com",
+      "hashedPassword":"$2a$10$52IFOba30w8yQUEF3wfqPOy3hq31ujasIr0cQu6RFcD0GURuZE4wi",
+      "userCards":[]
       // Only use unhashedPassword for testing purposes
       // unhashedPassword: aB3!bnmv
     },
