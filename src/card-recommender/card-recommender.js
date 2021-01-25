@@ -10,7 +10,7 @@ export default class CardRecommender extends React.Component{
         value: '',
         touched: false,
       },
-      optimizationCategory:{
+      points:{
         value: '',
         touched: false,
       },
@@ -61,44 +61,56 @@ export default class CardRecommender extends React.Component{
           <section className="form-section overview-section">
             <label htmlFor="dream-title">Credit Score</label>
             <p>If you don't know your credit score you can find it by using <a href="https://www.creditkarma.com/">credit karma</a> or looking at the score provided by your issuer. This is necessary to determine what cards you will likely be approved for.</p>
-            <input type="text" name="dream-title" placeholder="Type your credit score here" required/>
+            <input type="number" name="dream-title" placeholder="Type your credit score here" required/>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">What are you trying to optimize htmlFor?</label>
-            <p>Points or cash back. If cash back is selected, cards used solely htmlFor travel will not be recommended.</p>
-            <input type="text" name="dream-title" placeholder="Type what you want to optimize htmlFor here" required/>
+            <p>Points or cash back. If cash back is selected, cards used solely htmlFor travel will not be recommended.</p><br/>
+            <input type="radio" id="yesPoints" name='Points' value={true}/>
+            <label htmlFor="yesPoints">Points</label>
+            <input type="radio" id="noStudent" name="Points" value={false}/>
+            <label htmlFor="noPoints">Cash Back</label><br/>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">How many credit cards do you currently have?</label>
-            <input type="text" name="dream-title" placeholder="Type the # of cards you have here" required/>
+            <input type="number" name="dream-title" placeholder="Type the # of cards you have here" required/>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">How much spend do you normally have per month and would like to put on a card?</label>
-            <input type="text" name="dream-title" placeholder="Type how much you spend per month here" required/>
+            <input type="number" name="dream-title" placeholder="Type how much you spend per month here" required/>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">How many non business credit cards have you gotten in the last 24 months from Chase? This affects 5/24. Link to article about 5/24</label>
-            <input type="text" name="dream-title" placeholder="Type the number here" required/>
+            <input type="number" name="dream-title" placeholder="Type the number here" required/>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">How many hard inquiries have you had in the last 6 months? This affects your ability to get cards from Citi.</label>
-            <input type="text" name="dream-title" placeholder="Type the number here" required/>
+            <input type="number" name="dream-title" placeholder="Type the number here" required/>
           </section>
           <section className="form-section overview-section">
-            <label htmlFor="dream-title">Have you opened any acounts with American express in the pass?</label>
-            <input type="text" name="dream-title" placeholder="Type yes no here" required/>
+            <label htmlFor="AmexAccount">Have you opened any acounts with American express in the pass?</label><br/>
+            <input type="radio" id="yesAmex" name="AmexAccount" value={true}/>
+            <label htmlFor="yesAmex">Yes</label>
+            <input type="radio" id="noAmex" name="AmexAccount" value={false}/>
+            <label htmlFor="noAmex">No</label><br/>
           </section>
           <section className="form-section overview-section">
-            <label htmlFor="dream-title">Are you a student?</label>
-            <input type="text" name="dream-title" placeholder="Type yes no here" required/>
+            <label htmlFor="dream-title">Are you a student?</label><br/>
+            <input type="radio" id="yesStudent" name='Student' value={true}/>
+            <label htmlFor="yesStudent">Yes</label>
+            <input type="radio" id="noStudent" name="Student" value={false}/>
+            <label htmlFor="noStudent">No</label><br/>
           </section>
           <section className="form-section overview-section">
-            <label htmlFor="dream-title">Are there any big upcoming expenses?</label>
-            <input type="text" name="dream-title" placeholder="Type yes no here" required/>
+            <label htmlFor="dream-title">Are there any big upcoming expenses?</label><br/>
+            <input type="radio" id="yesBigUpcomingExpense" name='BigUpcomingExpense' value={true}/>
+            <label htmlFor="yesBigUpcomingExpense">Yes</label>
+            <input type="radio" id="noStudent" name="BigUpcomingExpense" value={false}/>
+            <label htmlFor="noBigUpcomingExpense">No</label><br/>
           </section>
           <section className="form-section overview-section">
-            <label htmlFor="dream-title">When was your last hard inquiry?</label>
-            <input type="text" name="dream-title" placeholder="Type date here" required/>
+            <label htmlFor="lastHardInquiry">When was your last hard inquiry?</label>
+            <input type="date" id = 'lastHardInquiry' name="lastHardInquiry" placeholder="Type date here" required/>
           </section>
           <section className="button-section">
             <button type="submit">Submit</button>
