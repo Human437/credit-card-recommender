@@ -65,6 +65,7 @@ export default class SignIn extends React.Component{
         if(res){
           //Route to user cards l8r
           alert('You have successfully signed in')
+          this.state.userSignedIn()
         }else{
           this.setState({isPasswordCorrect:false})
         }

@@ -30,6 +30,10 @@ class App extends React.Component {
     })
   }
 
+  userSignedIn= () => {
+    this.setState({isSignedIn:true})
+  }
+
   render(){
     document.getElementById('root').className = this.state.theme
     return(
@@ -39,6 +43,7 @@ class App extends React.Component {
           theme: this.state.theme,
           articles: this.state.articles,
           userCards: this.state.userCards,
+          userSignedIn: this.userSignedIn,
         }}
       >
         <nav role="navigation">

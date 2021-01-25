@@ -80,6 +80,7 @@ export default class SignUp extends React.Component{
       console.log(hash)
     })
     alert('Email and password successfully stored. ***No info has actually been stored, just a test to ensure the submit works***')
+    this.context.userSignedIn()
   }
 
   render(){
