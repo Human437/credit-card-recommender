@@ -1,6 +1,7 @@
 import React from 'react'
 import './card-recommender.css'
 import RecommenderContext from './../recommenderContext'
+import ValidationError from './../validationError'
 
 export default class CardRecommender extends React.Component{
   constructor(props){
@@ -11,7 +12,7 @@ export default class CardRecommender extends React.Component{
         touched: false,
       },
       points:{
-        value: '',
+        value: true,
         touched: false,
       },
       numberOfCC:{
@@ -51,6 +52,20 @@ export default class CardRecommender extends React.Component{
 
   static contextType = RecommenderContext;
 
+  updateCreditScore(cs){
+    this.setState({creditScore:{value:cs,touched:true}})
+  }
+
+  updatePoints(point){
+    this.setState({points:{value:point,touched:true}})
+  }
+
+  validateCreditScore(){
+    if(this.state.creditScore.value>850 || this.state.creditScore.value<0){
+      return 'Credit score must between 0 and 850'
+    }
+  }
+
   render(){
     return(
       <>
@@ -61,12 +76,19 @@ export default class CardRecommender extends React.Component{
           <section className="form-section overview-section">
             <label htmlFor="dream-title">Credit Score</label>
             <p>If you don't know your credit score you can find it by using <a href="https://www.creditkarma.com/">credit karma</a> or looking at the score provided by your issuer. This is necessary to determine what cards you will likely be approved for.</p>
-            <input type="number" name="dream-title" placeholder="Type your credit score here" required/>
+            <input 
+              type="number" 
+              name="dream-title" 
+              placeholder="Type your credit score here" 
+              required 
+              onChange={e=>this.updateCreditScore(e.target.value)}
+            />
+            {this.state.creditScore.touched && (<ValidationError message = {this.validateCreditScore()}/>)}
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">What are you trying to optimize htmlFor?</label>
             <p>Points or cash back. If cash back is selected, cards used solely for travel will not be recommended.</p><br/>
-            <select value={this.state.points.value} onChange={this.state.handlePoints}>
+            <select value={this.state.points.value} onChange={e=>{this.updatePoints(e.target.value)}}>
               <option value={true}>Points</option>
               <option value={false}>Cash Back</option>
             </select>
@@ -89,21 +111,21 @@ export default class CardRecommender extends React.Component{
           </section>
           <section className="form-section overview-section">
             <label htmlFor="AmexAccount">Have you opened any acounts with American express in the pass?</label><br/>
-            <select value={this.state.openedAmex.value} onChange={this.state.handleAmex}>
+            <select value={this.state.openedAmex.value} onChange={this.state.updateAmex}>
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">Are you a student?</label><br/>
-            <select value={this.state.isStudent.value} onChange={this.state.handleStudent}>
+            <select value={this.state.isStudent.value} onChange={this.state.updateStudent}>
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">Are there any big upcoming expenses?</label><br/>
-            <select value={this.state.bigUpcomingExpenses.value} onChange={this.state.handleBUE}>
+            <select value={this.state.bigUpcomingExpenses.value} onChange={this.state.updateBUE}>
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select>
