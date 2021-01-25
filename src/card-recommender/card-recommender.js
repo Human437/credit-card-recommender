@@ -6,7 +6,46 @@ export default class CardRecommender extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-
+      creditScore: {
+        value: '',
+        touched: false,
+      },
+      optimizationCategory:{
+        value: '',
+        touched: false,
+      },
+      numberOfCC:{
+        value: '',
+        touched: false,
+      },
+      avgSpendPerMonth:{
+        value: '',
+        touched: false,
+      },
+      numberofChaseCards:{
+        value: '',
+        touched: false,
+      },
+      numberOfHardInquiries:{
+        value: '',
+        touched: false,
+      },
+      openedAmex:{
+        value: false,
+        touched: false,
+      },
+      isStudent:{
+        value: false,
+        touched: false,
+      },
+      bigUpcomingExpenses:{
+        value: false,
+        touched: false,
+      },
+      lastHardInquiry:{
+        value: '',
+        touched: false,
+      },    
     }
   }
 
@@ -21,7 +60,7 @@ export default class CardRecommender extends React.Component{
         <form id="record-dream">
           <section className="form-section overview-section">
             <label htmlFor="dream-title">Credit Score</label>
-            <p>If you don't know your credit score you can find it by using <a href="https://www.creditkarma.com/">credit karma</a> or looking at the score provided by your issuer. This is necessary to determine what cards you will likely be approved htmlFor.</p>
+            <p>If you don't know your credit score you can find it by using <a href="https://www.creditkarma.com/">credit karma</a> or looking at the score provided by your issuer. This is necessary to determine what cards you will likely be approved for.</p>
             <input type="text" name="dream-title" placeholder="Type your credit score here" required/>
           </section>
           <section className="form-section overview-section">
