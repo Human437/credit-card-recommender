@@ -53,6 +53,7 @@ export default class SignIn extends React.Component{
     event.preventDefault()
     // First check to see if the email is associated with any account
     // 2nd check to see if the correct password is provided
+    // Fetch all the users
     const user = STORE.users.find(user =>(Object.values(user).includes(this.state.email.value)))
     if (typeof user !== 'undefined'){
       const hash = user.hashedPassword
@@ -65,7 +66,9 @@ export default class SignIn extends React.Component{
         if(res){
           //Route to user cards l8r
           alert('You have successfully signed in')
-          this.state.userSignedIn()
+          this.context.userSignedIn()
+          this.context.updateUserId(user.id)
+          this.props.history.push(`/your-cards/${user.id}`)
         }else{
           this.setState({isPasswordCorrect:false})
         }
