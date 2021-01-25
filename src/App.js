@@ -52,7 +52,8 @@ class App extends React.Component {
           availableCards: this.state.availableCards,
           userSignedIn: this.userSignedIn,
           userCards: this.state.userCards,
-          updateUserId: this.updateUserId
+          updateUserId: this.updateUserId,
+          userId: this.state.userId,
         }}
       >
         <nav role="navigation">
