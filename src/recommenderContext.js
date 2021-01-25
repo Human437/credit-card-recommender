@@ -4,7 +4,7 @@ const RecommenderContext = React.createContext({
   isSignedIn: false,
   theme: 'light',
   articles: [],
-  userCards: [],
+  availableCards: [],
 })
 
 export default RecommenderContext

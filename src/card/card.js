@@ -10,7 +10,7 @@ export default class Card extends React.Component{
 
     }
     this.selectedCardId = this.props.match.params.id;
-    this.card = STORE.userCards.find(card => card.id === Number(this.selectedCardId))
+    this.card = STORE.availableCards.find(card => card.id === Number(this.selectedCardId))
   }
 
   static contextType = RecommenderContext

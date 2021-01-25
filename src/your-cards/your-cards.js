@@ -18,13 +18,13 @@ export default class YourCards extends React.Component{
       <>
         <br/>
         <ul>
-          {this.context.userCards.map(userCard =>{
+          {this.context.availableCards.map(availableCard =>{
             return(
-              <li key = {userCard.id} id = {userCard.id}>
+              <li key = {availableCard.id} id = {availableCard.id}>
                 <Link
-                  to = {`/your-cards/${userCard.id}`}
+                  to = {`/your-cards/${availableCard.id}`}
                 >
-                  {userCard.title}
+                  {availableCard.title}
                 </Link>
               </li>
             )

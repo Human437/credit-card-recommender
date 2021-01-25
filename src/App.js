@@ -19,14 +19,14 @@ class App extends React.Component {
       isSignedIn: false,
       theme: 'light',
       articles: [],
-      userCards: [],
+      availableCards: [],
     }
   }
 
   componentDidMount(){
     this.setState({
       articles:STORE.articles,
-      userCards:STORE.userCards
+      availableCards:STORE.availableCards
     })
   }
 
@@ -42,7 +42,7 @@ class App extends React.Component {
           isSignedIn:this.state.isSignedIn,
           theme: this.state.theme,
           articles: this.state.articles,
-          userCards: this.state.userCards,
+          availableCards: this.state.availableCards,
           userSignedIn: this.userSignedIn,
         }}
       >
