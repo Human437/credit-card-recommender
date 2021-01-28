@@ -60,6 +60,38 @@ export default class CardRecommender extends React.Component{
     this.setState({points:{value:point,touched:true}})
   }
 
+  updateNumberOfCC(cards){
+    this.setState({numberOfCC:{value:cards, touched:true}})
+  }
+
+  updateAvgSpendPerMonth(avgSpend){
+    this.setState({avgSpendPerMonth:{value:avgSpend,touched:true}})
+  }
+
+  updateNumberOfChaseCards(chaseCards){
+    this.setState({numberofChaseCards:{value:chaseCards,touched:true}})
+  }
+
+  updateNumberOfHardInquiries(inquiries){
+    this.setState({numberOfHardInquiries:{value:inquiries,touched:true}})
+  }
+
+  updateOpenedAmex(openedAmex){
+    this.setState({openedAmex:{value:openedAmex,touched:true}})
+  }
+
+  updateIsStudent(student){
+    this.setState({isStudent:{value:student,touched:true}})
+  }
+
+  updateExpenses(expenses){
+    this.setState({bigUpcomingExpenses:{value:expenses,touched:true}})
+  }
+
+  updateLastHardInquiry(date){
+    this.setState({lastHardInquiry:{value:date,touched:true}})
+  }
+
   validateCreditScore(){
     if(this.state.creditScore.value>850 || this.state.creditScore.value<0){
       return 'Credit score must between 0 and 850'
@@ -95,37 +127,37 @@ export default class CardRecommender extends React.Component{
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">How many credit cards do you currently have?</label>
-            <input type="number" name="dream-title" placeholder="Type the # of cards you have here" required/>
+            <input type="number" name="dream-title" placeholder="Type the # of cards you have here" required onChange={e=>{this.updateNumberOfCC(e.target.value)}}/>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">How much spend do you normally have per month and would like to put on a card?</label>
-            <input type="number" name="dream-title" placeholder="Type how much you spend per month here" required/>
+            <input type="number" name="dream-title" placeholder="Type how much you spend per month here" required onChange={e=>{this.updateAvgSpendPerMonth(e.target.value)}}/>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">How many non business credit cards have you gotten in the last 24 months from Chase? This affects 5/24. Link to article about 5/24</label>
-            <input type="number" name="dream-title" placeholder="Type the number here" required/>
+            <input type="number" name="dream-title" placeholder="Type the number here" required onChange={e=>{this.updateNumberOfChaseCards(e.target.value)}}/>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">How many hard inquiries have you had in the last 6 months? This affects your ability to get cards from Citi.</label>
-            <input type="number" name="dream-title" placeholder="Type the number here" required/>
+            <input type="number" name="dream-title" placeholder="Type the number here" required onChange={e=>{this.updateNumberOfHardInquiries(e.target.value)}}/>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="AmexAccount">Have you opened any acounts with American express in the pass?</label><br/>
-            <select value={this.state.openedAmex.value} onChange={this.state.updateAmex}>
+            <select value={this.state.openedAmex.value} onChange={e=>{this.updateOpenedAmex(e.target.value)}}>
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">Are you a student?</label><br/>
-            <select value={this.state.isStudent.value} onChange={this.state.updateStudent}>
+            <select value={this.state.isStudent.value} onChange={e=>{this.updateIsStudent(e.target.value)}}>
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select>
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">Are there any big upcoming expenses?</label><br/>
-            <select value={this.state.bigUpcomingExpenses.value} onChange={this.state.updateBUE}>
+            <select value={this.state.bigUpcomingExpenses.value} onChange={e=>{this.updateExpenses(e.target.value)}}>
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select>
