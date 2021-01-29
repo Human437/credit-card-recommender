@@ -22,7 +22,11 @@ export default class CardRecommender extends React.Component{
       lastHardInquiry:{
         value: '',
         touched: false,
-      },    
+      }, 
+      annualIncome:{
+        value:'',
+        touched: false,
+      }   
     }
   }
 
@@ -42,6 +46,10 @@ export default class CardRecommender extends React.Component{
 
   updateLastHardInquiry(date){
     this.setState({lastHardInquiry:{value:date,touched:true}})
+  }
+
+  updateAnnualIncome(income){
+    this.setState({annualIncome:{value:income,touched:true}})
   }
 
   validateCreditScore(){
@@ -74,6 +82,14 @@ export default class CardRecommender extends React.Component{
     }
   }
 
+  validateAnnualIncome(){
+    if(this.state.annualIncome.value === ''){
+      return 'You must provide your annual income'
+    }else if(this.state.annualIncome.value <=0){
+      return 'You must provide a value greater than 0'
+    }
+  }
+
   handleSubmit(event){
     event.preventDefault()
   }
@@ -100,6 +116,11 @@ export default class CardRecommender extends React.Component{
             <label htmlFor="dream-title">How many credit cards do you currently have?</label>
             <input type="number" name="dream-title" placeholder="Type the # of cards you have here" required onChange={e=>{this.updateNumberOfCC(e.target.value)}}/>
             {this.state.numberOfCC.touched && (<ValidationError message = {this.validateNumberOfCC()}/>)}
+          </section>
+          <section className="form-section overview-section">
+            <label htmlFor="dream-title">What is your annual income?</label>
+            <input type="number" name="dream-title" placeholder="Type your income here" required onChange={e=>{this.updateAnnualIncome(e.target.value)}}/>
+            {this.state.annualIncome.touched && (<ValidationError message = {this.validateAnnualIncome()}/>)}
           </section>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">Are you a student?</label><br/>
