@@ -77,8 +77,14 @@ export default class CardRecommender extends React.Component{
   }
 
   validateLastHardInquiry(){
+    const today = new Date()
+    const dateOfLastHardInquiry = new Date(this.state.lastHardInquiry.value)
+    const years = today.getFullYear() - dateOfLastHardInquiry.getFullYear()
+    const months = (years * 12) + (today.getMonth() - dateOfLastHardInquiry.getMonth())
     if(this.state.lastHardInquiry.value === ''){
       return 'You must provide the date of your last hard inquiry'
+    }else if(months < 0){
+      return 'You must provide a date in the past'
     }
   }
 
@@ -95,7 +101,7 @@ export default class CardRecommender extends React.Component{
     switch(Number(this.state.numberOfCC.value)){
       case 0:
         if(this.state.creditScore.value > 400){
-          if(this.state.isStudent.value){
+          if(this.state.isStudent.value === true){
             this.context.updateUserCards([1])
             // Array containing the id for the discover it student card
           }else{
@@ -109,6 +115,7 @@ export default class CardRecommender extends React.Component{
         }
         break;
       case 1:
+        this.checkLastHardInquiry(1)
         break;
       case 2:
         break;
