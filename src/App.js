@@ -12,6 +12,7 @@ import YourCards from './your-cards/your-cards'
 import Article from './article/article'
 import Card from './card/card'
 import ProtectedYourCards from './protectedRoutes/protectedYourCards'
+import ShowResults from './show-results/show-results'
 
 class App extends React.Component {
   constructor(props){
@@ -23,6 +24,7 @@ class App extends React.Component {
       availableCards: [],
       userCards: [],
       userId: null,
+      msg:'',
     }
   }
 
@@ -41,6 +43,13 @@ class App extends React.Component {
     this.setState({userId:id})
   }
 
+  updateUserCards = (cards) => {
+    this.setState({userCards:cards})
+  }
+  
+  updateMsg = (message) => {
+    this.setState({msg:message})
+  }
   render(){
     document.getElementById('root').className = this.state.theme
     return(
@@ -54,6 +63,9 @@ class App extends React.Component {
           userCards: this.state.userCards,
           updateUserId: this.updateUserId,
           userId: this.state.userId,
+          updateUserCards: this.updateUserCards,
+          updateMsg: this.updateMsg,
+          msg:this.state.msg,
         }}
       >
         <nav role="navigation">
@@ -95,6 +107,10 @@ class App extends React.Component {
         <Route
           path = '/cards/:id'
           component = {Card}
+        />
+        <Route
+          path = '/view-results'
+          component = {ShowResults}
         />
       </RecommenderContext.Provider>
     )
