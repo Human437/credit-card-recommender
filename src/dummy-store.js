@@ -45,7 +45,44 @@ export default {
       "title": "Chase Saphire Prefered",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel dui mattis, bibendum dui aliquet, lobortis ante. Cras vestibulum, quam ac tincidunt dapibus, sapien mauris hendrerit mauris, ut scelerisque nisl magna sed ipsum. Sed molestie tortor vitae dignissim volutpat. In tincidunt leo imperdiet elit pulvinar, in rhoncus nulla pretium. Duis id malesuada risus. Phasellus libero nunc, feugiat at pharetra sit amet, vulputate ut justo.",
       "image": "Place holder"
+    },    
+    {
+      "id": 4,
+      "title": "Chase Saphire Reserved",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel dui mattis, bibendum dui aliquet, lobortis ante. Cras vestibulum, quam ac tincidunt dapibus, sapien mauris hendrerit mauris, ut scelerisque nisl magna sed ipsum. Sed molestie tortor vitae dignissim volutpat. In tincidunt leo imperdiet elit pulvinar, in rhoncus nulla pretium. Duis id malesuada risus. Phasellus libero nunc, feugiat at pharetra sit amet, vulputate ut justo.",
+      "image": "Place holder"
+    },    
+    {
+      "id": 5,
+      "title": "Discover IT Cash Back Credit Card",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel dui mattis, bibendum dui aliquet, lobortis ante. Cras vestibulum, quam ac tincidunt dapibus, sapien mauris hendrerit mauris, ut scelerisque nisl magna sed ipsum. Sed molestie tortor vitae dignissim volutpat. In tincidunt leo imperdiet elit pulvinar, in rhoncus nulla pretium. Duis id malesuada risus. Phasellus libero nunc, feugiat at pharetra sit amet, vulputate ut justo.",
+      "image": "Place holder"
     },
+    {
+      "id": 6,
+      "title": "American Express Gold Card",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel dui mattis, bibendum dui aliquet, lobortis ante. Cras vestibulum, quam ac tincidunt dapibus, sapien mauris hendrerit mauris, ut scelerisque nisl magna sed ipsum. Sed molestie tortor vitae dignissim volutpat. In tincidunt leo imperdiet elit pulvinar, in rhoncus nulla pretium. Duis id malesuada risus. Phasellus libero nunc, feugiat at pharetra sit amet, vulputate ut justo.",
+      "image": "Place holder"
+    },
+    {
+      "id": 7,
+      "title": "American Express Platinum Card",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel dui mattis, bibendum dui aliquet, lobortis ante. Cras vestibulum, quam ac tincidunt dapibus, sapien mauris hendrerit mauris, ut scelerisque nisl magna sed ipsum. Sed molestie tortor vitae dignissim volutpat. In tincidunt leo imperdiet elit pulvinar, in rhoncus nulla pretium. Duis id malesuada risus. Phasellus libero nunc, feugiat at pharetra sit amet, vulputate ut justo.",
+      "image": "Place holder"
+    },
+    {
+      "id": 7,
+      "title": "Chase Freedom Unlimited",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel dui mattis, bibendum dui aliquet, lobortis ante. Cras vestibulum, quam ac tincidunt dapibus, sapien mauris hendrerit mauris, ut scelerisque nisl magna sed ipsum. Sed molestie tortor vitae dignissim volutpat. In tincidunt leo imperdiet elit pulvinar, in rhoncus nulla pretium. Duis id malesuada risus. Phasellus libero nunc, feugiat at pharetra sit amet, vulputate ut justo.",
+      "image": "Place holder"
+    },
+    {
+      "id": 8,
+      "title": "Discover it Secured",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel dui mattis, bibendum dui aliquet, lobortis ante. Cras vestibulum, quam ac tincidunt dapibus, sapien mauris hendrerit mauris, ut scelerisque nisl magna sed ipsum. Sed molestie tortor vitae dignissim volutpat. In tincidunt leo imperdiet elit pulvinar, in rhoncus nulla pretium. Duis id malesuada risus. Phasellus libero nunc, feugiat at pharetra sit amet, vulputate ut justo.",
+      "image": "Place holder"
+    },
+    
   ],
   "users":[
     {
