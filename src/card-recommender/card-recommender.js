@@ -123,7 +123,17 @@ export default class CardRecommender extends React.Component{
         }
         break;
       case 1:
-        
+        if(this.checkLastHardInquiry(9)){
+          if(this.state.creditScore.value >= 650){
+            this.context.updateUserCards([8,10])
+            this.context.updateMsg('Go for the Chase Freedom Flex if you want to be more envolved in the game and take advantage of the rotating categories. If you want to have a flat 1.5% back on all purchases go for the Chas Freedom Unlimited.')
+          }else{
+            this.context.updateMsg('You should try to raise your score up to 650 before applying for either the Chase Freedom Flex or Chase Freedom Unlimited. Although, you stil may be approved with a credit score less than 650, having a score of at least 650 helps to boost your chances of being approved.')
+          }
+        }else{
+          this.context.updateUserCards([])
+          this.context.updateMsg('You should stick to your first credit card for at least 9 months to build up your credit history before applying for another credit card.')
+        }
         break;
       case 2:
         break;
