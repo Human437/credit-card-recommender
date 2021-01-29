@@ -96,6 +96,14 @@ export default class CardRecommender extends React.Component{
     }
   }
 
+  checkLastHardInquiry(waitMonths){
+    const today = new Date()
+    const dateOfLastHardInquiry = new Date(this.state.lastHardInquiry.value)
+    const years = today.getFullYear() - dateOfLastHardInquiry.getFullYear()
+    const months = (years * 12) + (today.getMonth() - dateOfLastHardInquiry.getMonth())
+    return months > waitMonths
+  }
+
   handleSubmit(event){
     event.preventDefault()
     switch(Number(this.state.numberOfCC.value)){
@@ -115,7 +123,7 @@ export default class CardRecommender extends React.Component{
         }
         break;
       case 1:
-        this.checkLastHardInquiry(1)
+        
         break;
       case 2:
         break;
