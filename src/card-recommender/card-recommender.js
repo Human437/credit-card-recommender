@@ -170,6 +170,23 @@ export default class CardRecommender extends React.Component{
         }
         break;
       case 4:
+        if(this.checkLastHardInquiry(2)){
+          if(this.state.annualIncome.value > 30000){
+            if(this.state.creditScore.value >= 700){
+              this.context.updateUserCards([6,7])
+              this.context.updateMsg('After getting all your non-business Chase cards, it is a good idea to start branching out to other issuers to take advantage of the benefits they have to offer. American Express is a good issuer to start with. Go for the American Express Gold Card if you don\'t travel much now, but may want to in the future or if you don\'t think your yearly spend justifies paying the $550 annual fee for the American Express Platinum Card. Go for the American Express Platinum Card if you think that you can take advantage of all the benefits to justify the high annual fee.')
+            }else{
+              this.context.updateUserCards([6,7])
+              this.context.updateMsg('You should try to raise your score up to 700 before applying for either the American Express Gold Card or American Express Platinum Card. Although, you stil may be approved with a credit score less than 700, having a score of at least 700 helps to boost your chances of being approved.')
+            }
+          }else{
+            this.context.updateUserCards([3,4])
+            this.context.updateMsg('Typically annaul income does not play that big of a role in whether or not you can get approved for a credit card, but in case where issuers will have to give you a high credit limit, annual income comes into play. That said you do not meet the bear minimum cut off to be accepted which tends to hover around $30,000. You can choose to lie on your application, but it is not recommended as it can lead to shut down by the issuer and a potential ban.')
+          }
+        }else{
+          this.context.updateUserCards([])
+          this.context.updateMsg('You should aim to leave 2 to 3 months between each credit card application so that issuers do not deny you due to you applying for too many credit cards too quickly.' )
+        }
         break;
       default:
         console.log('Something went wrong')
