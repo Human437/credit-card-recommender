@@ -92,6 +92,34 @@ export default class CardRecommender extends React.Component{
 
   handleSubmit(event){
     event.preventDefault()
+    switch(Number(this.state.numberOfCC.value)){
+      case 0:
+        if(this.state.creditScore.value > 400){
+          if(this.state.isStudent.value){
+            this.context.updateUserCards([1])
+            // Array containing the id for the discover it student card
+          }else{
+            this.context.updateUserCards([5])
+            // Array containg the id for the regular discover cash back card
+          }
+        }else{
+          this.context.updateUserCards([8])
+          // Array containg the id for the secured discover it card
+          this.context.updateMsg('Do your best to increase your credit score with the secure card and try to graduate to the unsecured version.')
+        }
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+      case 4:
+        break;
+      default:
+        console.log('Something went wrong')
+    }
+    this.props.history.push('/view-results')
   }
   render(){
     return(
@@ -143,12 +171,12 @@ export default class CardRecommender extends React.Component{
                 this.validateCreditScore() ||
                 this.validateNumberOfCC() ||
                 this.validateIsStudent() ||
-                this.validateLastHardInquiry()
+                this.validateLastHardInquiry()||
+                this.validateAnnualIncome()
               }
             >
               Submit
             </button>
-            <button type="reset">Reset</button>
           </section>
         </form>
       </>
