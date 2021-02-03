@@ -17,9 +17,9 @@ export default class Card extends React.Component{
       headers: new Headers({
         'Authorization': `Bearer ${config.BEARER_TOKEN}`
       })
-      .then(response => response.json())
-      .then(data => this.setState({card:data}))
     })
+    .then(response => response.json())
+    .then(data => this.setState({card:data}))
   }
 
   render(){
