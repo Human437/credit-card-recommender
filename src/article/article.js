@@ -1,23 +1,33 @@
 import React from 'react'
 import './article.css'
-import RecommenderContext from './../recommenderContext'
-import STORE from './../dummy-store'
+import config from './../config'
 
-export default function Article(props){
-  const articles = STORE.articles;
-  return(
-    <RecommenderContext.Consumer>
-      {(value) => {
-        const selectedArticleId = props.match.params.id;
-        const article = articles.find(article => article.id === Number(selectedArticleId))
-        // In actual build it will fetch using the specific id endpoint
-        return(
-          <>
-            <h1>{article.title}</h1>
-            <p>{article.content}</p>
-          </>
-        )
-      }}
-    </RecommenderContext.Consumer>
-  )
+export default class Article extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      article: {}
+    }
+    this.selectedArticleId = props.match.params.id;
+  }
+
+  componentDidMount(){
+    fetch(`${config.API_Articles_ENDPOINT}/${this.selectedArticleId}`, {
+      method: 'get',
+      headers: new Headers({
+        'Authorization': `Bearer ${config.BEARER_TOKEN}`
+      })
+    })
+    .then(response => response.json())
+    .then(data => this.setState({article:data}))
+  }
+
+  render(){
+    return(
+      <>
+        <h1>{this.state.article.title}</h1>
+        <p>{this.state.article.content}</p>
+      </>
+    )
+  }
 }
