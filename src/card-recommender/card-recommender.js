@@ -109,7 +109,7 @@ export default class CardRecommender extends React.Component{
     switch(Number(this.state.numberOfCC.value)){
       case 0:
         if(this.state.creditScore.value > 400){
-          if(this.state.isStudent.value === true){
+          if(this.state.isStudent.value === 'true'){
             this.context.updateUserCards([1])
             // Array containing the id for the discover it student card
           }else{
