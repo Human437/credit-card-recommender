@@ -5,6 +5,7 @@ import ValidationError from './../validationError'
 import bcrypt from 'bcryptjs'
 import validator from 'validator';
 import STORE from './../dummy-store'
+import config from './../config'
 
 export default class SignUp extends React.Component{
   constructor(props){
@@ -72,31 +73,75 @@ export default class SignUp extends React.Component{
     event.preventDefault();
     const email = this.state.email.value.trim()
     // Check if the provided email is associated with another account
-    const user = STORE.users.find(user =>(Object.values(user).includes(email)))
-    if (typeof user !== 'undefined'){
-      this.setState({isEmailInDb:true})
-    }else{
-      const password = this.state.password.value.trim()
-      const rounds = 10; // number of salt rounds, by default its 10
-      bcrypt.hash(password, rounds, (err, hash) => {
-        if (err) {
-          console.error(err)
-          return
-        }
-        console.log(email)
-        console.log(hash)
+    fetch(`${config.API_User_ENDPOINT}?email=${email}`, {
+      method: 'get',
+      headers: new Headers({
+        'Authorization': `Bearer ${config.BEARER_TOKEN}`
       })
-      alert('Email and password successfully stored. ***No info has actually been stored, just a test to ensure the submit works***')
-      this.context.userSignedIn()
-      if (this.context.userCards.length === 0){
-        this.props.history.push(`/card-recommender`)
+    })
+    .then(response => response.json())
+    .then(json => {
+      if(typeof json.id === 'undefined'){
+        const password = this.state.password.value.trim()
+        const rounds = 10; // number of salt rounds, by default its 10
+        bcrypt.hash(password, rounds, (err, hash) => {
+          if (err) {
+            console.error(err)
+            return
+          }
+          fetch(config.API_User_ENDPOINT, {
+            method: 'POST',
+            body: JSON.stringify({
+              email:email,
+              hashedPassword: hash,
+              userCards: this.context.userCards,
+              msg: this.context.msg
+            }),
+            headers: {
+              'content-type': 'application/json',
+              'Authorization': `Bearer ${config.BEARER_TOKEN}`
+            },
+          })
+          .then(response => response.json())
+          .then(data =>{
+            this.context.userSignedIn()
+            this.context.updateUserId(data.id);
+            if (this.context.userCards.length === 0){
+              this.props.history.push(`/card-recommender`)
+            }else{
+              this.props.history.push(`/your-cards/${this.context.userId}`)
+            }
+          })
+        })
       }else{
-        // Fetch the user id that was just created
-        const userId = 3; // Let userId be 3 for testing purposes
-        this.context.updateUserId(userId);
-        this.props.history.push(`/your-cards/${userId}`)
+        this.setState({isEmailInDb:true})
       }
-    }
+    })
+    // const user = STORE.users.find(user =>(Object.values(user).includes(email)))
+    // if (typeof user !== 'undefined'){
+    //   this.setState({isEmailInDb:true})
+    // }else{
+    //   const password = this.state.password.value.trim()
+    //   const rounds = 10; // number of salt rounds, by default its 10
+    //   bcrypt.hash(password, rounds, (err, hash) => {
+    //     if (err) {
+    //       console.error(err)
+    //       return
+    //     }
+    //     console.log(email)
+    //     console.log(hash)
+    //   })
+    //   alert('Email and password successfully stored. ***No info has actually been stored, just a test to ensure the submit works***')
+    //   this.context.userSignedIn()
+    //   if (this.context.userCards.length === 0){
+    //     this.props.history.push(`/card-recommender`)
+    //   }else{
+    //     // Fetch the user id that was just created
+    //     const userId = 3; // Let userId be 3 for testing purposes
+    //     this.context.updateUserId(userId);
+    //     this.props.history.push(`/your-cards/${userId}`)
+    //   }
+    // }
   }
 
   render(){
