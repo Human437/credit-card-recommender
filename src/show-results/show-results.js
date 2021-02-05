@@ -41,7 +41,6 @@ export default class ShowResults extends React.Component{
                                 'content-type': 'application/json',
                               }),
                               body: JSON.stringify({
-                                // id: this.context.userId,
                                 usercards: this.context.userCards,
                                 msg: this.context.msg
                               })
