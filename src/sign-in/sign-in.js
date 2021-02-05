@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs'
 import validator from 'validator'
 import ValidationError from './../validationError'
 import STORE from './../dummy-store'
+import config from './../config'
 
 export default class SignIn extends React.Component{
   constructor(props){
@@ -54,28 +55,60 @@ export default class SignIn extends React.Component{
     // First check to see if the email is associated with any account
     // 2nd check to see if the correct password is provided
     // Fetch all the users
-    const user = STORE.users.find(user =>(Object.values(user).includes(this.state.email.value)))
-    if (typeof user !== 'undefined'){
-      const hash = user.hashedPassword
-      const enteredPassword = this.state.password.value.trim();
-      bcrypt.compare(enteredPassword, hash, (err, res) => {
-        if (err) {
-          console.error(err)
-          return
-        }
-        if(res){
-          //Route to user cards l8r
-          alert('You have successfully signed in')
-          this.context.userSignedIn()
-          this.context.updateUserId(user.id)
-          this.props.history.push(`/your-cards/${user.id}`)
-        }else{
-          this.setState({isPasswordCorrect:false})
-        }
+    const email = this.state.email.value.trim()
+    fetch(`${config.API_User_ENDPOINT}?email=${email}`, {
+      method: 'get',
+      headers: new Headers({
+        'Authorization': `Bearer ${config.BEARER_TOKEN}`
       })
-    }else{
-      this.setState({isEmailInDb:false})
-    }
+    })
+    .then(response => response.json())
+    .then(json => {
+      if (typeof json.id !== 'undefined'){
+        const hash = json.hashedpassword
+        const enteredPassword = this.state.password.value.trim()
+        bcrypt.compare(enteredPassword, hash, (err, res) => {
+          if (err) {
+            console.error(err)
+            return
+          }
+          if(res){
+            //Route to user cards l8r
+            this.context.userSignedIn()
+            this.context.updateUserId(json.id)
+            this.context.updateUserCards(json.usercards)
+            this.context.updateMsg(json.msg)
+            this.props.history.push(`/your-cards/${this.context.userId}`)
+          }else{
+            this.setState({isPasswordCorrect:false})
+          }
+        })
+      }else{
+        this.setState({isEmailInDb:false})
+      }
+    })
+    // const user = STORE.users.find(user =>(Object.values(user).includes(this.state.email.value)))
+    // if (typeof user !== 'undefined'){
+    //   const hash = user.hashedPassword
+    //   const enteredPassword = this.state.password.value.trim();
+    //   bcrypt.compare(enteredPassword, hash, (err, res) => {
+    //     if (err) {
+    //       console.error(err)
+    //       return
+    //     }
+    //     if(res){
+    //       //Route to user cards l8r
+    //       alert('You have successfully signed in')
+    //       this.context.userSignedIn()
+    //       this.context.updateUserId(user.id)
+    //       this.props.history.push(`/your-cards/${user.id}`)
+    //     }else{
+    //       this.setState({isPasswordCorrect:false})
+    //     }
+    //   })
+    // }else{
+    //   this.setState({isEmailInDb:false})
+    // }
   }
 
   render(){
