@@ -50,6 +50,15 @@ class App extends React.Component {
 
   render(){
     document.getElementById('root').className = this.state.theme
+    let navBar;
+    if (this.state.isSignedIn){
+      navBar = <></>
+    }else{
+      navBar = <>
+                <button><Link to="/sign-in">Sign In</Link></button>
+                <button><Link to="/sign-up">Sign Up</Link></button>
+              </>
+    }
     return(
       <RecommenderContext.Provider
         value = {{
@@ -73,8 +82,9 @@ class App extends React.Component {
           <Link to= '/card-recommender'>Card Recommendation Tool</Link>
           <Link to= '/articles'>View Articles</Link>
           <Link to= '/your-cards/:id'>View Your Cards</Link>
-          <button><Link to="/sign-in">Sign In</Link></button>
-          <button><Link to="/sign-up">Sign Up</Link></button>
+          {navBar}
+          {/* <button><Link to="/sign-in">Sign In</Link></button>
+          <button><Link to="/sign-up">Sign Up</Link></button> */}
         </nav>
         <Route
           exact path = '/'
