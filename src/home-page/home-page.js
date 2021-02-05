@@ -24,7 +24,7 @@ return(
       </section>
       <section>
         <header>
-        <Link to= '/your-cards'><h3>Keep track of your cards</h3></Link>
+        <Link to= '/your-cards/:id'><h3>Keep track of your cards</h3></Link>
         </header>
         <p>[<em>placeholder for screenshot of recommended cards UI</em>]</p>
         <p>View the cards that have been recommended to you based on the responses you last provided.</p>
