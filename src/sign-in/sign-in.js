@@ -71,8 +71,21 @@ export default class SignIn extends React.Component{
           if(res){
             this.context.userSignedIn()
             this.context.updateUserId(json.id)
-            this.context.updateUserCards(json.usercards)
-            this.context.updateMsg(json.msg)
+            if (this.context.isFromResultsPage){
+              this.context.updateIsFromResultsPage(false)
+              console.log(this.context.userCards)
+              fetch(`${config.API_User_ENDPOINT}/${this.context.userId}`, {
+                method: 'PATCH',
+                headers: new Headers({
+                  'Authorization': `Bearer ${config.BEARER_TOKEN}`,
+                  'content-type': 'application/json',
+                }),
+                body: JSON.stringify({
+                  usercards: this.context.userCards,
+                  msg: this.context.msg
+                })
+              })
+            }
             this.props.history.push(`/your-cards/${this.context.userId}`)
           }else{
             this.setState({isPasswordCorrect:false})
