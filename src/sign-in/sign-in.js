@@ -73,7 +73,6 @@ export default class SignIn extends React.Component{
             this.context.updateUserId(json.id)
             if (this.context.isFromResultsPage){
               this.context.updateIsFromResultsPage(false)
-              console.log(this.context.userCards)
               fetch(`${config.API_User_ENDPOINT}/${this.context.userId}`, {
                 method: 'PATCH',
                 headers: new Headers({
