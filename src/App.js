@@ -24,6 +24,7 @@ class App extends React.Component {
       userCards: [],
       userId: null,
       msg:'',
+      isFromResultsPage: false,
     }
   }
 
@@ -42,6 +43,11 @@ class App extends React.Component {
   updateMsg = (message) => {
     this.setState({msg:message})
   }
+
+  updateIsFromResultsPage = (state) => {
+    this.setState({isFromResultsPage:state})
+  }
+
   render(){
     document.getElementById('root').className = this.state.theme
     return(
@@ -58,6 +64,8 @@ class App extends React.Component {
           updateUserCards: this.updateUserCards,
           updateMsg: this.updateMsg,
           msg:this.state.msg,
+          isFromResultsPage: this.state.isFromResultsPage,
+          updateIsFromResultsPage: this.updateIsFromResultsPage
         }}
       >
         <nav role="navigation">
