@@ -4,7 +4,6 @@ import RecommenderContext from './../recommenderContext'
 import bcrypt from 'bcryptjs'
 import validator from 'validator'
 import ValidationError from './../validationError'
-import STORE from './../dummy-store'
 import config from './../config'
 
 export default class SignIn extends React.Component{
@@ -52,9 +51,6 @@ export default class SignIn extends React.Component{
 
   handleSubmit(event){
     event.preventDefault()
-    // First check to see if the email is associated with any account
-    // 2nd check to see if the correct password is provided
-    // Fetch all the users
     const email = this.state.email.value.trim()
     fetch(`${config.API_User_ENDPOINT}?email=${email}`, {
       method: 'get',
@@ -73,7 +69,6 @@ export default class SignIn extends React.Component{
             return
           }
           if(res){
-            //Route to user cards l8r
             this.context.userSignedIn()
             this.context.updateUserId(json.id)
             this.context.updateUserCards(json.usercards)
@@ -87,28 +82,6 @@ export default class SignIn extends React.Component{
         this.setState({isEmailInDb:false})
       }
     })
-    // const user = STORE.users.find(user =>(Object.values(user).includes(this.state.email.value)))
-    // if (typeof user !== 'undefined'){
-    //   const hash = user.hashedPassword
-    //   const enteredPassword = this.state.password.value.trim();
-    //   bcrypt.compare(enteredPassword, hash, (err, res) => {
-    //     if (err) {
-    //       console.error(err)
-    //       return
-    //     }
-    //     if(res){
-    //       //Route to user cards l8r
-    //       alert('You have successfully signed in')
-    //       this.context.userSignedIn()
-    //       this.context.updateUserId(user.id)
-    //       this.props.history.push(`/your-cards/${user.id}`)
-    //     }else{
-    //       this.setState({isPasswordCorrect:false})
-    //     }
-    //   })
-    // }else{
-    //   this.setState({isEmailInDb:false})
-    // }
   }
 
   render(){
