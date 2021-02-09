@@ -51,11 +51,21 @@ export default class SignUp extends React.Component{
 
   validatePassword(){
     const password = this.state.password.value.trim();
+    /*
+    ^                         Start anchor
+    (?=.*[A-Z])               Ensure string has two uppercase letters.
+    (?=.*[!@#$%^&*()-+_`~{}|/?.>,<[\]])(?=.*[0-9])(?=.*[a-z])Ensure string has one special case letter.
+    (?=.*[0-9])               Ensure string has two digits.
+    (?=.*[a-z])               Ensure string has three lowercase letters.
+    .{8,}                     Ensure string is of at least length 8, replace the 8 with whatever value; , makes it atleast.
+    $                         End anchor.
+    */
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()-+_`~{}|/?.>,<[\]])(?=.*[0-9])(?=.*[a-z]).{8,}$/
     if(password.length === 0){
       return 'Password is required'
     }else if(password === this.state.email.value.trim()){
       return 'Password cannot be your email'
-    }else if(!validator.isStrongPassword(password)){
+    }else if(!passwordRegex.test(password)){
       return 'Password does not meet the above requirements'
     }
   }
