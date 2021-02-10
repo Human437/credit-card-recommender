@@ -111,9 +111,11 @@ export default class CardRecommender extends React.Component{
         if(this.state.creditScore.value > 400){
           if(this.state.isStudent.value === 'true'){
             this.context.updateUserCards([1])
+            this.context.updateMsg('')
             // Array containing the id for the discover it student card
           }else{
             this.context.updateUserCards([5])
+            this.context.updateMsg('')
             // Array containg the id for the regular discover cash back card
           }
         }else{
@@ -202,7 +204,7 @@ export default class CardRecommender extends React.Component{
         <form id="record-dream" onSubmit={e=>{this.handleSubmit(e)}}>
           <section className="form-section overview-section">
             <label htmlFor="dream-title">Credit Score</label>
-            <p>If you don't know your credit score you can find it by using <a href="https://www.creditkarma.com/">credit karma</a> or looking at the score provided by your issuer. This is necessary to determine what cards you will likely be approved for.</p>
+            <p>If you don't know your credit score you can find it by using <a href="https://www.creditkarma.com/" target="_blank" rel="noopener noreferrer">credit karma</a> or looking at the score provided by your issuer. This is necessary to determine what cards you will likely be approved for.</p>
             <input 
               type="number" 
               name="dream-title" 
