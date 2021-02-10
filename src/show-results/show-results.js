@@ -44,8 +44,9 @@ export default class ShowResults extends React.Component{
                                 usercards: this.context.userCards,
                                 msg: this.context.msg
                               })
-                            })
-                            this.props.history.push(`/your-cards/${this.context.userId}`)
+                            }).then(
+                              this.props.history.push(`/your-cards/${this.context.userId}`)
+                            )
                           }}
                         >
                           Update recommended cards
@@ -75,7 +76,7 @@ export default class ShowResults extends React.Component{
           })}
         </ul>
         <p>{this.context.msg}</p>
-        <h2>Save Your Results</h2>
+        <h2>Save Your Results by Signing Up or Signing In</h2>
         {signOnButtons}
       </>
     )
