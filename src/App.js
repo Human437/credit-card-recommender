@@ -52,7 +52,23 @@ class App extends React.Component {
     document.getElementById('root').className = this.state.theme
     let navBar;
     if (this.state.isSignedIn){
-      navBar = <></>
+      navBar = <>
+                <button
+                  onClick = { e => {
+                    this.setState({
+                      isSignedIn: false,
+                      theme: 'light',
+                      articles: [],
+                      availableCards: [],
+                      userCards: [],
+                      userId: null,
+                      msg:'',
+                      isFromResultsPage: false,
+                    })
+                  }}
+                >
+                  <Link to="/">Sign Out</Link></button>
+               </>
     }else{
       navBar = <>
                 <button><Link to="/sign-in">Sign In</Link></button>
