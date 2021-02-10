@@ -36,7 +36,13 @@ export default class YourCards extends React.Component{
         .then(response => response.json())
       })
       Promise.all(results)
-      .then(response => this.setState({cards:response}))
+      .then(response => {
+        if(response.length === 0){
+          this.props.history.push('/card-recommender')
+        }else{
+          this.setState({cards:response})
+        }
+      })
     })
   }
 
