@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, useLocation } from 'react-router-dom'
 import './App.css';
 import RecommenderContext from './recommenderContext'
 import HomePage from './home-page/home-page'
@@ -50,9 +50,9 @@ class App extends React.Component {
 
   render(){
     document.getElementById('root').className = this.state.theme
-    let navBar;
+    let signOn;
     if (this.state.isSignedIn){
-      navBar = <>
+      signOn = <>
                 <button
                   onClick = { e => {
                     this.setState({
@@ -70,11 +70,20 @@ class App extends React.Component {
                   <Link to="/">Sign Out</Link></button>
                </>
     }else{
-      navBar = <>
+      signOn = <>
                 <button><Link to="/sign-in">Sign In</Link></button>
                 <button><Link to="/sign-up">Sign Up</Link></button>
               </>
     }
+
+    let navBar =<nav role="navigation" id='navBar'>
+                  <Link to="/">Home</Link>
+                  <Link to= '/card-recommender'>Card Recommendation Tool</Link>
+                  <Link to= '/articles'>View Articles</Link>
+                  <Link to= '/your-cards/:id'>View Your Cards</Link>
+                  {signOn}
+                </nav>
+
     return(
       <RecommenderContext.Provider
         value = {{
@@ -93,15 +102,7 @@ class App extends React.Component {
           updateIsFromResultsPage: this.updateIsFromResultsPage
         }}
       >
-        <nav role="navigation">
-          <Link to="/">Home</Link>
-          <Link to= '/card-recommender'>Card Recommendation Tool</Link>
-          <Link to= '/articles'>View Articles</Link>
-          <Link to= '/your-cards/:id'>View Your Cards</Link>
-          {navBar}
-          {/* <button><Link to="/sign-in">Sign In</Link></button>
-          <button><Link to="/sign-up">Sign Up</Link></button> */}
-        </nav>
+        {navBar}
         <Route
           exact path = '/'
           component ={HomePage}
@@ -138,6 +139,15 @@ class App extends React.Component {
           path = '/view-results'
           component = {ShowResults}
         />
+        <div id ='icon-container'>
+          <span>Check me out:</span>
+          <div className='icons github'>
+            <a href="https://github.com/human437" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
+          </div>
+          <div className='icons linkedin'>
+            <a href="https://www.linkedin.com/in/yuenhigh-lee/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
+          </div>
+        </div>
       </RecommenderContext.Provider>
     )
   }
