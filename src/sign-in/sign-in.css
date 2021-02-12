@@ -16,6 +16,7 @@ body {
   align-items: center;
   font-family: "Poppins";
   background-image: url("./../images/signOn/pexels-simon-migaj-747964.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
   background-position-y: center;
   background-position-x: center;
