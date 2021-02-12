@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs'
 import validator from 'validator'
 import ValidationError from './../validationError'
 import config from './../config'
+import {Link } from 'react-router-dom'
 
 export default class SignIn extends React.Component{
   constructor(props){
@@ -99,43 +100,59 @@ export default class SignIn extends React.Component{
   render(){
     return(
       <>
-        <form className='signup-form' onSubmit={e=>{this.handleSubmit(e)}}>
-          <div>
-            <label htmlFor="email">Email</label>
-            <br/>
-            <input 
-              type="text" 
-              name='email' 
-              id='email' 
-              placeholder='Enter your email'
-              onChange={e=>this.updateEmail(e.target.value)}
-            />
-            {this.state.email.touched && (<ValidationError message = {this.validateEmail()}/>)}
-            {!this.state.isEmailInDb && (<ValidationError message = 'The email entered is not associated with any account'/>)}
+        <Link to='/'><h2>Credit Card Recommender</h2></Link>
+        <div id='form-container'>
+          <div id="form-section">
+            <form className='signup-form' onSubmit={e=>{this.handleSubmit(e)}}>
+              <div className='form-group'>
+                <div className='form-field' id = 'email'>
+                  <div>
+                    <i className="fa fa-user"></i>
+                  </div>
+                  <input 
+                    type="text" 
+                    placeholder='Email'
+                    onChange={e=>this.updateEmail(e.target.value)}
+                  />
+                </div>
+                <small className='error'>
+                  {this.state.email.touched && (<ValidationError message = {this.validateEmail()}/>)}
+                  {!this.state.isEmailInDb && (<ValidationError message = 'The email entered is not associated with any account'/>)}
+                </small>
+                <div className='form-field' id='password'>
+                  <div>
+                    <i className="fa fa-lock"></i>
+                  </div>
+                  <input 
+                    type="password" 
+                    placeholder='Password'
+                    onChange={e=>this.updatePassword(e.target.value)}
+                  />
+                </div>
+                <small className='error'>
+                  {this.state.password.touched && (<ValidationError message = {this.validatePassword()}/>)}
+                  {!this.state.isPasswordCorrect && (<ValidationError message = "The password entered is incorrect"/>)}
+                </small>
+              </div>
+              <button 
+                type='submit'
+                id='submit-btn'
+                disabled={
+                  this.validateEmail()||
+                  this.validatePassword()
+                }
+              >
+                Sign In
+              </button>
+              <div id="register-text">
+                <small>
+                  Don't have an account?
+                  <Link to='/sign-up'><span>Register</span></Link>
+                </small>
+              </div>
+            </form>
           </div>
-          <div>
-            <label htmlFor="password">Password</label>
-            <br/>
-            <input 
-              type="password" 
-              name='password' 
-              id='password'
-              placeholder='Enter your password'
-              onChange={e=>this.updatePassword(e.target.value)}
-            />
-            {this.state.password.touched && (<ValidationError message = {this.validatePassword()}/>)}
-            {!this.state.isPasswordCorrect && (<ValidationError message = "The password entered is incorrect"/>)}
-          </div>
-          <button 
-            type='submit'
-            disabled={
-              this.validateEmail()||
-              this.validatePassword()
-            }
-          >
-            Sign In
-          </button>
-        </form>
+        </div>
       </>
     )
   }
