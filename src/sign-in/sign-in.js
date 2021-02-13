@@ -100,59 +100,61 @@ export default class SignIn extends React.Component{
   render(){
     return(
       <>
-        <Link to='/'><h2>Credit Card Recommender</h2></Link>
-        <div id='form-container'>
-          <div id="form-section">
-            <form className='signup-form' onSubmit={e=>{this.handleSubmit(e)}}>
-              <div className='form-group'>
-                <div className='form-field' id = 'email'>
-                  <div>
-                    <i className="fa fa-user"></i>
+        {/* <div id='test'> */}
+          <Link to='/'><h2>Credit Card Recommender</h2></Link>
+          <div id='form-container'>
+            <div id="form-section">
+              <form className='signup-form' onSubmit={e=>{this.handleSubmit(e)}}>
+                <div className='form-group'>
+                  <div className='form-field' id = 'email'>
+                    <div>
+                      <i className="fa fa-user"></i>
+                    </div>
+                    <input 
+                      type="text" 
+                      placeholder='Email'
+                      onChange={e=>this.updateEmail(e.target.value)}
+                    />
                   </div>
-                  <input 
-                    type="text" 
-                    placeholder='Email'
-                    onChange={e=>this.updateEmail(e.target.value)}
-                  />
-                </div>
-                <small className='error'>
-                  {this.state.email.touched && (<ValidationError message = {this.validateEmail()}/>)}
-                  {!this.state.isEmailInDb && (<ValidationError message = 'The email entered is not associated with any account'/>)}
-                </small>
-                <div className='form-field' id='password'>
-                  <div>
-                    <i className="fa fa-lock"></i>
+                  <small className='error'>
+                    {this.state.email.touched && (<ValidationError message = {this.validateEmail()}/>)}
+                    {!this.state.isEmailInDb && (<ValidationError message = 'The email entered is not associated with any account'/>)}
+                  </small>
+                  <div className='form-field' id='password'>
+                    <div>
+                      <i className="fa fa-lock"></i>
+                    </div>
+                    <input 
+                      type="password" 
+                      placeholder='Password'
+                      onChange={e=>this.updatePassword(e.target.value)}
+                    />
                   </div>
-                  <input 
-                    type="password" 
-                    placeholder='Password'
-                    onChange={e=>this.updatePassword(e.target.value)}
-                  />
+                  <small className='error'>
+                    {this.state.password.touched && (<ValidationError message = {this.validatePassword()}/>)}
+                    {!this.state.isPasswordCorrect && (<ValidationError message = "The password entered is incorrect"/>)}
+                  </small>
                 </div>
-                <small className='error'>
-                  {this.state.password.touched && (<ValidationError message = {this.validatePassword()}/>)}
-                  {!this.state.isPasswordCorrect && (<ValidationError message = "The password entered is incorrect"/>)}
-                </small>
-              </div>
-              <button 
-                type='submit'
-                id='submit-btn'
-                disabled={
-                  this.validateEmail()||
-                  this.validatePassword()
-                }
-              >
-                Sign In
-              </button>
-              <div id="register-text">
-                <small>
-                  Don't have an account?
-                  <Link to='/sign-up'><span>Register</span></Link>
-                </small>
-              </div>
-            </form>
+                <button 
+                  type='submit'
+                  id='submit-btn'
+                  disabled={
+                    this.validateEmail()||
+                    this.validatePassword()
+                  }
+                >
+                  Sign In
+                </button>
+                <div id="register-text">
+                  <small>
+                    Don't have an account?
+                    <Link to='/sign-up'><span>Register</span></Link>
+                  </small>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
+        {/* </div> */}
       </>
     )
   }
