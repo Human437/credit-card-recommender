@@ -12,12 +12,7 @@ html,body {
 body {
   background-color: rgb(200, 200, 200);
   font-family: "Poppins";
-  background-image: url("./../images/signOn/pexels-simon-migaj-747964.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-y: center;
-  background-position-x: center;
-  height: 100%;
+  position: relative;
   text-align: center;
 }
 
@@ -120,6 +115,11 @@ input {
 }
 
 .sign-on-container{
+  background-image: url("./../images/signOn/pexels-simon-migaj-747964.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
+  background-position-x: center;
   display:flex;
   flex-direction: column;
   justify-content: center;
