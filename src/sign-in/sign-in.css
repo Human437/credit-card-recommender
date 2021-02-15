@@ -113,41 +113,10 @@ input {
   background-color: #0b70fd50;
 }
 
-#icon-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 30px;
-  position:fixed;
-  bottom: 0;
-  left:26%;
-  right:26%;
-}
-
-span{
-  color:rgb(255, 255, 255);
-}
-
-.icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  border-radius: 50%;
-  color: rgb(87, 86, 86);
-  margin: 5px;
-}
 
 .error{
   color:red;
   width:295px;
-}
-
-a{
-  margin:0px;
-  padding:0px;
-  text-decoration: none;
-  color: rgb(255, 255, 255);
 }
 
 .sign-on-container{
