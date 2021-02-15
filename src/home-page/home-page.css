@@ -1,0 +1,90 @@
+.container{
+  max-width: 960px;
+  margin: 0 auto;
+  background: #f9f9f9;
+  font-size: 24px;
+  padding: 25px;
+}
+
+.parallax1{
+  background: url('./../images/signOn/pexels-simon-migaj-747964.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
+  background-position-x: center;
+  background-attachment: fixed;
+  height: 100%;
+
+}
+
+#heading{
+  height:95vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#text-4-care{
+  padding: 2vw;
+}
+#money-fan{
+  width:45vw;
+  height:100vh;
+}
+
+#care{
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#trust{
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  height: 100vh;
+  background: url('./../images/landingPage/pexels-pixabay-461049.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
+  background-position-x: center;
+  
+  color:white;
+}
+
+#text-4-trust{
+  padding: 3vh;
+  background-color: #014953;
+}
+
+#heading-h1{
+  font-size: 3em;
+  color:black
+}
+#heading-h2{
+  font-size: 2em;
+  color:#bad3da;
+  padding-bottom: 1vh;
+}
+
+#lp-button{
+  padding: 1vh;
+  border-radius: 5px;
+  border-style: none;
+  color:honeydew;
+  background-color: #014953;
+}
+
+#lp-button:hover{
+  cursor:pointer;
+}
+
+@media screen and (max-width: 600px) {
+  #care{
+    flex-direction: column;
+  }
+  #money-fan{
+    width: 90%;
+  }
+}
