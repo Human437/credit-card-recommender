@@ -101,7 +101,7 @@ export default class SignIn extends React.Component{
     return(
       <>
         <div className='sign-on-container'>
-          <Link to='/'><h2>Credit Card Recommender</h2></Link>
+          <Link to='/'><h2 id='heading-sign-on'>Credit Card Recommender</h2></Link>
           <div id='form-container'>
             <div id="form-section">
               <form className='signup-form' onSubmit={e=>{this.handleSubmit(e)}}>
