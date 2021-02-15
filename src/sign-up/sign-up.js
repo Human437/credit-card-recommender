@@ -132,65 +132,77 @@ export default class SignUp extends React.Component{
   render(){
     return(
       <>
-        <Link to='/'><h2>Credit Card Recommender</h2></Link>
-        <div id='form-container'>
-          <div id="form-section">
-            <form className='signup-form' onSubmit={e=>this.handleSubmit(e)}>
-              <div className='form-group'>
-                <div className='form-field' id = 'email'>
-                  <div>
-                    <i className="fa fa-user"></i>
+        <div className ='sign-on-container'>
+          <Link to='/'><h2>Credit Card Recommender</h2></Link>
+          <div id='form-container'>
+            <div id="form-section">
+              <form className='signup-form' onSubmit={e=>this.handleSubmit(e)}>
+                <div className='form-group'>
+                  <div className='form-field' id = 'email'>
+                    <div>
+                      <i className="fa fa-user"></i>
+                    </div>
+                    <input 
+                      type="text" 
+                      placeholder='Email'
+                      onChange={e=>this.updateEmail(e.target.value)}
+                    />
                   </div>
-                  <input 
-                    type="text" 
-                    placeholder='Email'
-                    onChange={e=>this.updateEmail(e.target.value)}
-                  />
-                </div>
-                <small className='error'>
-                  {this.state.email.touched && (<ValidationError message = {this.validateEmail()}/>)}
-                  {this.state.isEmailInDb && (<ValidationError message = 'The email entered is already associated with another account'/>)}
-                </small>
-                <small id="password-requirement">Password must be at least 8 characters containing atleast 1 lowercase, 1 uppercase, 1 number, and 1 symbol</small>
-                <div className='form-field' id='password'>
-                  <div>
-                    <i className="fa fa-lock"></i>
-                  </div>
-                  <input 
-                    type="password" 
-                    placeholder='Enter a strong password'
-                    onChange={e=>this.updatePassword(e.target.value)}
-                  />
-                </div>
-                <small className='error'>
-                  {this.state.password.touched && (<ValidationError message = {this.validatePassword()}/>)}
-                </small>
-                <div className='form-field' id='confirm-password'>
-                  <div>
-                    <i className="fa fa-lock"></i>
-                  </div>
-                  <input 
+                  <small className='error'>
+                    {this.state.email.touched && (<ValidationError message = {this.validateEmail()}/>)}
+                    {this.state.isEmailInDb && (<ValidationError message = 'The email entered is already associated with another account'/>)}
+                  </small>
+                  
+                  <div className='form-field' id='password'>
+                    <div>
+                      <i className="fa fa-lock"></i>
+                    </div>
+                    <input 
                       type="password" 
-                      placeholder='Reenter your password'
-                      onChange={e=>this.updateConfirmPassword(e.target.value)}
-                  />
+                      placeholder='Enter a strong password'
+                      onChange={e=>this.updatePassword(e.target.value)}
+                    />
+                  </div>
+                  <small id="password-requirement">Use 8 or more characters with a mix of letters, numbers & symbols</small>
+                  <small className='error'>
+                    {this.state.password.touched && (<ValidationError message = {this.validatePassword()}/>)}
+                  </small>
+                  <div className='form-field' id='confirm-password'>
+                    <div>
+                      <i className="fa fa-lock"></i>
+                    </div>
+                    <input 
+                        type="password" 
+                        placeholder='Reenter your password'
+                        onChange={e=>this.updateConfirmPassword(e.target.value)}
+                    />
+                  </div>
+                  <small className='error'>
+                    {this.state.confirmPassword.touched && (<ValidationError message = {this.validateConfirmPassword()}/>)}
+                  </small>
                 </div>
-                <small className='error'>
-                  {this.state.confirmPassword.touched && (<ValidationError message = {this.validateConfirmPassword()}/>)}
-                </small>
-              </div>
-              <button 
-                type='submit'
-                id='submit-btn'
-                disabled={
-                  this.validateEmail()||
-                  this.validatePassword()||
-                  this.validateConfirmPassword()
-                }
-              >
-                Sign Up
-              </button>
-            </form>
+                <button 
+                  type='submit'
+                  id='submit-btn'
+                  disabled={
+                    this.validateEmail()||
+                    this.validatePassword()||
+                    this.validateConfirmPassword()
+                  }
+                >
+                  Sign Up
+                </button>
+              </form>
+            </div>
+          </div>
+          <div id ='icon-container'>
+            <span>Check me out:</span>
+            <div className='icons github'>
+              <a href="https://github.com/human437" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
+            </div>
+            <div className='icons linkedin'>
+              <a href="https://www.linkedin.com/in/yuenhigh-lee/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
+            </div>
           </div>
         </div>
       </>
