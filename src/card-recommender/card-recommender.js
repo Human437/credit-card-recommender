@@ -201,6 +201,7 @@ export default class CardRecommender extends React.Component{
       <h3 id = 'disclaimer'>
         Disclaimer: This tool is not meant as a replacement for your own common sense or knowledge of your current needs and overall goals in the credit card game. This tool is only meant to help beginners in the credit card game make an educated choice for their next card.
       </h3>
+      <br/>
         <div id ='form-container'>
           <div id="form-section">
             <form id="card-recommender-form" onSubmit={e=>{this.handleSubmit(e)}}>

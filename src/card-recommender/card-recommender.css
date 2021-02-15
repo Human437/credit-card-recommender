@@ -1,6 +1,5 @@
 #disclaimer{
   color:red;
-  padding: 1vh;
 }
 #credit-karma{
   color:black;
@@ -14,10 +13,6 @@
   border-radius: 5px;
 }
 #student{
-  /* padding: 10px 13vw;
-  font-size: 15px;
-  margin: 5px 0px;
-  border-radius: 5px; */
   width:100%;
 }
 #last-hard-inquiry{
