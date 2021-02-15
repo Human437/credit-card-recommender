@@ -198,61 +198,79 @@ export default class CardRecommender extends React.Component{
   render(){
     return(
       <>
-      <h1 id = 'disclaimer'>
-        Disclaimer: This tool is not meant as a replacement for your own common sense or knowledge of your current needs and overall goals in the credit card game. This tool is only meant to help beginners in the credit card game make an educated choice for their next card. It should not be the only deciding factor for getting your next credit card.
-      </h1>
-        <form id="record-dream" onSubmit={e=>{this.handleSubmit(e)}}>
-          <section className="form-section overview-section">
-            <label htmlFor="dream-title">Credit Score</label>
-            <p>If you don't know your credit score you can find it by using <a href="https://www.creditkarma.com/" target="_blank" rel="noopener noreferrer">credit karma</a> or looking at the score provided by your issuer. This is necessary to determine what cards you will likely be approved for.</p>
-            <input 
-              type="number" 
-              name="dream-title" 
-              placeholder="Type your credit score here" 
-              required 
-              onChange={e=>this.updateCreditScore(e.target.value)}
-            />
-            {this.state.creditScore.touched && (<ValidationError message = {this.validateCreditScore()}/>)}
-          </section>
-          <section className="form-section overview-section">
-            <label htmlFor="dream-title">How many credit cards do you currently have?</label>
-            <input type="number" name="dream-title" placeholder="Type the # of cards you have here" required onChange={e=>{this.updateNumberOfCC(e.target.value)}}/>
-            {this.state.numberOfCC.touched && (<ValidationError message = {this.validateNumberOfCC()}/>)}
-          </section>
-          <section className="form-section overview-section">
-            <label htmlFor="dream-title">What is your annual income?</label>
-            <input type="number" name="dream-title" placeholder="Type your income here" required onChange={e=>{this.updateAnnualIncome(e.target.value)}}/>
-            {this.state.annualIncome.touched && (<ValidationError message = {this.validateAnnualIncome()}/>)}
-          </section>
-          <section className="form-section overview-section">
-            <label htmlFor="dream-title">Are you a student?</label><br/>
-            <select value={this.state.isStudent.value} onChange={e=>{this.updateIsStudent(e.target.value)}}>
-              <option value =''>-Select-</option>
-              <option value={true}>Yes</option>
-              <option value={false}>No</option>
-            </select>
-            {this.state.isStudent.touched && (<ValidationError message = {this.validateIsStudent()}/>)}
-          </section>
-          <section className="form-section overview-section">
-            <label htmlFor="lastHardInquiry">When was your last hard inquiry?</label>
-            <input type="date" id = 'lastHardInquiry' name="lastHardInquiry" placeholder="Type date here" required onChange={e=>{this.updateLastHardInquiry(e.target.value)}}/>
-            {this.state.lastHardInquiry.touched && (<ValidationError message = {this.validateLastHardInquiry()}/>)}
-          </section>
-          <section className="button-section">
-            <button 
-              type="submit"
-              disabled={
-                this.validateCreditScore() ||
-                this.validateNumberOfCC() ||
-                this.validateIsStudent() ||
-                this.validateLastHardInquiry()||
-                this.validateAnnualIncome()
-              }
-            >
-              Submit
-            </button>
-          </section>
-        </form>
+      <h3 id = 'disclaimer'>
+        Disclaimer: This tool is not meant as a replacement for your own common sense or knowledge of your current needs and overall goals in the credit card game. This tool is only meant to help beginners in the credit card game make an educated choice for their next card.
+      </h3>
+        <div id ='form-container'>
+          <div id="form-section">
+            <form id="card-recommender-form" onSubmit={e=>{this.handleSubmit(e)}}>
+              <section className="form-section overview-section">
+                <div className='form-field' id ='credit-score'>
+                  <div><i class="fas fa-tachometer-alt"></i></div>
+                  <input 
+                    type="number" 
+                    placeholder="Credit Score" 
+                    required 
+                    onChange={e=>this.updateCreditScore(e.target.value)}
+                  />
+                </div>
+                <div id='credit-score-help'><small >If you don't know your credit score you can find it by using <a href="https://www.creditkarma.com/" target="_blank" rel="noopener noreferrer" id='credit-karma'>credit karma</a> or looking at the score provided by your issuer.</small></div>
+                <small className='error'>{this.state.creditScore.touched && (<ValidationError message = {this.validateCreditScore()}/>)}</small>
+              </section>
+              <section className="form-section overview-section">
+                <div className ='form-field' id ='#-of-cc'>
+                  <div><i class="fas fa-hashtag"></i></div>
+                  <input type="number" placeholder="The number of cards you have" required onChange={e=>{this.updateNumberOfCC(e.target.value)}}/>
+                </div>
+                <small className='error'>{this.state.numberOfCC.touched && (<ValidationError message = {this.validateNumberOfCC()}/>)}</small>
+              </section>
+              <section className="form-section overview-section">
+              <div className ='form-field' id ='income'>
+                <div><i class="fas fa-dollar-sign"></i></div>
+                <input type="number" placeholder="Annual Income" required onChange={e=>{this.updateAnnualIncome(e.target.value)}}/>
+              </div>
+              <small className='error'>
+                {this.state.annualIncome.touched && (<ValidationError message = {this.validateAnnualIncome()}/>)}</small>
+              </section>
+              <section className="form-section overview-section">
+                <div>
+                  <select value={this.state.isStudent.value} onChange={e=>{this.updateIsStudent(e.target.value)}} id='student' className='form-field'>
+                    <option value =''>Are you a student?</option>
+                    <option value={true}>I am a student</option>
+                    <option value={false}>I am not a student</option>
+                  </select>
+                </div>
+                <small className='error'>
+                  {this.state.isStudent.touched && (<ValidationError message = {this.validateIsStudent()}/>)}
+                </small>
+              </section>
+              <section className="form-section overview-section">
+                <div id='last-hard-inquiry'>
+                  <label htmlFor="lastHardInquiry">When was your last hard inquiry?</label>
+                  <input type="date" id = 'lastHardInquiry' name="lastHardInquiry" placeholder="Type date here" required onChange={e=>{this.updateLastHardInquiry(e.target.value)}}/>
+                </div>
+                <small className='error'>
+                  {this.state.lastHardInquiry.touched && (<ValidationError message = {this.validateLastHardInquiry()}/>)}
+                </small>
+              </section>
+              <section className="button-section">
+                <button 
+                  type="submit"
+                  id='submit-btn'
+                  disabled={
+                    this.validateCreditScore() ||
+                    this.validateNumberOfCC() ||
+                    this.validateIsStudent() ||
+                    this.validateLastHardInquiry()||
+                    this.validateAnnualIncome()
+                  }
+                >
+                  Submit
+                </button>
+              </section>
+            </form>
+          </div>
+        </div>
       </>
     )
   }

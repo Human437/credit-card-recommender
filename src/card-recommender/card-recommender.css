@@ -1,0 +1,39 @@
+#disclaimer{
+  color:red;
+  padding: 1vh;
+}
+#credit-karma{
+  color:black;
+}
+#credit-score-help{
+  width:425px;
+}
+#lastHardInquiry{
+  width: 45%;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+#student{
+  /* padding: 10px 13vw;
+  font-size: 15px;
+  margin: 5px 0px;
+  border-radius: 5px; */
+  width:100%;
+}
+#last-hard-inquiry{
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  #last-hard-inquiry{
+    flex-direction: column;
+  }
+  #credit-score-help{
+    width:90vw;
+  }
+  #student{
+    padding: 10px 25vw;
+  }
+}
