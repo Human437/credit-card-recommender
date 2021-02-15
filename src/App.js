@@ -110,7 +110,15 @@ class App extends React.Component {
           path = '/view-results'
           component = {ShowResults}
         />
-
+          <div id ='icon-container'>
+            <span>Check me out:</span>
+            <div className='icons github'>
+              <a href="https://github.com/human437" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
+            </div>
+            <div className='icons linkedin'>
+              <a href="https://www.linkedin.com/in/yuenhigh-lee/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
+            </div>
+          </div>
       </RecommenderContext.Provider>
     )
   }
