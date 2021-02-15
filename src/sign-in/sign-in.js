@@ -100,7 +100,7 @@ export default class SignIn extends React.Component{
   render(){
     return(
       <>
-        {/* <div id='test'> */}
+        <div className='sign-on-container'>
           <Link to='/'><h2>Credit Card Recommender</h2></Link>
           <div id='form-container'>
             <div id="form-section">
@@ -154,7 +154,16 @@ export default class SignIn extends React.Component{
               </form>
             </div>
           </div>
-        {/* </div> */}
+          <div id ='icon-container'>
+            <span>Check me out:</span>
+            <div className='icons github'>
+              <a href="https://github.com/human437" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
+            </div>
+            <div className='icons linkedin'>
+              <a href="https://www.linkedin.com/in/yuenhigh-lee/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
       </>
     )
   }
