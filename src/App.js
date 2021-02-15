@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, useLocation } from 'react-router-dom'
+import { Route} from 'react-router-dom'
 import './App.css';
 import RecommenderContext from './recommenderContext'
 import HomePage from './home-page/home-page'
@@ -12,6 +12,7 @@ import Article from './article/article'
 import Card from './card/card'
 import ProtectedYourCards from './protectedRoutes/protectedYourCards'
 import ShowResults from './show-results/show-results'
+import NavBar from './navBar/navBar'
 
 class App extends React.Component {
   constructor(props){
@@ -50,39 +51,6 @@ class App extends React.Component {
 
   render(){
     document.getElementById('root').className = this.state.theme
-    let signOn;
-    if (this.state.isSignedIn){
-      signOn = <>
-                <button
-                  onClick = { e => {
-                    this.setState({
-                      isSignedIn: false,
-                      theme: 'light',
-                      articles: [],
-                      availableCards: [],
-                      userCards: [],
-                      userId: null,
-                      msg:'',
-                      isFromResultsPage: false,
-                    })
-                  }}
-                >
-                  <Link to="/">Sign Out</Link></button>
-               </>
-    }else{
-      signOn = <>
-                <button><Link to="/sign-in">Sign In</Link></button>
-                <button><Link to="/sign-up">Sign Up</Link></button>
-              </>
-    }
-
-    let navBar =<nav role="navigation" id='navBar'>
-                  <Link to="/">Home</Link>
-                  <Link to= '/card-recommender'>Card Recommendation Tool</Link>
-                  <Link to= '/articles'>View Articles</Link>
-                  <Link to= '/your-cards/:id'>View Your Cards</Link>
-                  {signOn}
-                </nav>
 
     return(
       <RecommenderContext.Provider
@@ -102,7 +70,10 @@ class App extends React.Component {
           updateIsFromResultsPage: this.updateIsFromResultsPage
         }}
       >
-        {navBar}
+        <Route
+          path = '/'
+          component ={NavBar}
+        />
         <Route
           exact path = '/'
           component ={HomePage}
