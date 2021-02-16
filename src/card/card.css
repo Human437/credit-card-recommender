@@ -10,3 +10,8 @@
 #cc-image{
   width:60vh;
 }
+@media screen and (max-width: 600px) {
+  #single-card-container{
+    flex-direction: column;
+  }
+}
