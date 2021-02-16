@@ -37,7 +37,7 @@ export default class NavBar extends React.Component{
               </>
     }
 
-    let navBar =<nav role="navigation" className={`main-nav ${this.state.isNavShown ? "show":""}`}>
+    let navBar =<nav role="navigation" className={`main-nav ${this.state.isNavShown ? "show":""} ${path==='/' ? "fixed-main-nav":""}`}>
                   <div className="logo"><Link to="/"><img src ={Favicon} alt='credit card icon' id='nav-icon' width='37px'/></Link></div>
                   <ul className="nav-links">
                     <li><Link to= '/card-recommender'>Recommendation Tool</Link></li>

@@ -77,4 +77,8 @@ ul{
     transition: transform 1s ease;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
   }
+  .fixed-main-nav{
+    position:fixed;
+    width:100%;
+  }
 }
