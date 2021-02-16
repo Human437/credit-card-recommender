@@ -29,55 +29,30 @@ export default class ShowResults extends React.Component{
   }
   
   render(){
-    let signOnButtons;
-    if (this.context.isSignedIn){
-      signOnButtons = <>
-                        <button
-                          onClick = {(e) => {
-                            fetch(`${config.API_User_ENDPOINT}/${this.context.userId}`, {
-                              method: 'PATCH',
-                              headers: new Headers({
-                                'Authorization': `Bearer ${config.BEARER_TOKEN}`,
-                                'content-type': 'application/json',
-                              }),
-                              body: JSON.stringify({
-                                usercards: this.context.userCards,
-                                msg: this.context.msg
-                              })
-                            }).then(
-                              this.props.history.push(`/your-cards/${this.context.userId}`)
-                            )
-                          }}
-                        >
-                          Update recommended cards
-                        </button>
-                      </>
-    }else{
-      signOnButtons = <>
-                        <button><Link to="/sign-up">Sign Up Today</Link></button>
-                        <button 
-                          onClick = {(e) =>{this.context.updateIsFromResultsPage(true)}}
-                        >
-                          <Link to="/sign-in">Sign In</Link>
-                        </button>
-                      </>
-    }
     return(
       <>
-        <ul>
-          {this.state.cards.map(card => {
-            return(
-              <li key ={card.id} id = {card.id}>
-                <Link to = {`/cards/${card.id}`}>
-                  {card.title}
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-        <p>{this.context.msg}</p>
-        <h2>Save Your Results by Signing Up or Signing In</h2>
-        {signOnButtons}
+        <div className='result-container'>
+          <div className='card-container'>
+            {this.state.cards.map(card => {
+              return(
+                <div id = {card.id} className='card'>
+                  <img src={card.imglink} alt={card.title} className='img-for-cards'/>
+                  <h3><Link to = {`/cards/${card.id}`}>
+                    {card.title}
+                  </Link></h3>
+                </div>
+              )
+            })}
+          </div>
+          <p className='text-for-cards'>{this.context.msg}</p>
+          <h2 id='save-results'>Sign on to save your results</h2>
+        </div>
+        <button 
+          id ='results-button'
+          onClick = {(e) =>{this.context.updateIsFromResultsPage(true)}}
+        >
+          <Link to="/sign-in">Sign On</Link>
+        </button>
       </>
     )
   }
