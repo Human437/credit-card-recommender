@@ -1,0 +1,12 @@
+#single-card-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#cc-text,#cc-image{
+  margin: 1vw;
+}
+#cc-image{
+  width:60vh;
+}

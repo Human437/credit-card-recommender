@@ -26,9 +26,11 @@ export default class Card extends React.Component{
     return(
       <>
         <h1>{this.state.card.title}</h1>
-        <p>{this.state.card.content}</p>
-        {/* Add something for the image of the card down the line */}
-        <img src={this.state.card.imglink} alt="place holder" width="500" height="600"/>
+        <br/>
+        <div id='single-card-container'>
+          <p id='cc-text'>{this.state.card.content}</p>
+          <img src={this.state.card.imglink} alt={this.state.card.title} id='cc-image'/>
+        </div>
       </>
     )
   }
