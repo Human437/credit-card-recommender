@@ -207,7 +207,7 @@ export default class CardRecommender extends React.Component{
             <form id="card-recommender-form" onSubmit={e=>{this.handleSubmit(e)}}>
               <section className="form-section overview-section">
                 <div className='form-field' id ='credit-score'>
-                  <div><i class="fas fa-tachometer-alt"></i></div>
+                  <div><i className="fas fa-tachometer-alt"></i></div>
                   <input 
                     type="number" 
                     placeholder="Credit Score" 
@@ -220,14 +220,14 @@ export default class CardRecommender extends React.Component{
               </section>
               <section className="form-section overview-section">
                 <div className ='form-field' id ='#-of-cc'>
-                  <div><i class="fas fa-hashtag"></i></div>
+                  <div><i className="fas fa-hashtag"></i></div>
                   <input type="number" placeholder="The number of cards you have" required onChange={e=>{this.updateNumberOfCC(e.target.value)}}/>
                 </div>
                 <small className='error'>{this.state.numberOfCC.touched && (<ValidationError message = {this.validateNumberOfCC()}/>)}</small>
               </section>
               <section className="form-section overview-section">
               <div className ='form-field' id ='income'>
-                <div><i class="fas fa-dollar-sign"></i></div>
+                <div><i className="fas fa-dollar-sign"></i></div>
                 <input type="number" placeholder="Annual Income" required onChange={e=>{this.updateAnnualIncome(e.target.value)}}/>
               </div>
               <small className='error'>
