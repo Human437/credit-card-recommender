@@ -6,7 +6,6 @@ import MoneyFan from './../images/landingPage/pexels-anna-nekrashevich-6801640.j
 export default function HomePage(){
 return(
     <main role="main">
-      <div clasName ='container'>
         <div className = 'parallax1'>
           <header id='heading'>
             <h1 id='heading-h1' className='lp-heading'>Credit Card Recommender</h1>
@@ -29,7 +28,6 @@ return(
             <p>You don't have to. All the information here is easily accessible through a quick Google search. Now you might be wondering what is the point of the site if I can find all of the information by myself? Good question, the point of this site is educate people who are just getting into the credit card game and don't have the time or simply don't want to spend hours looking up content from many places. This site is aimming to be a one stop shop for beginners who want a to the point card recommendation without any affiliate programs skewing our opinions. You are more than welcome to do your own research and even advise that you do so if you have the time, but we want to make what can seem like an overwhelming experience simple.</p>
           </div>
         </div>
-      </div>
     </main>
   )
 }
