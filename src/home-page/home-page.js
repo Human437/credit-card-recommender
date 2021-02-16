@@ -11,7 +11,7 @@ return(
           <header id='heading'>
             <h1 id='heading-h1' className='lp-heading'>Credit Card Recommender</h1>
             <h2 id='heading-h2' className='lp-heading'>Demystify your 1st card</h2>
-            <Link to= '/card-recommender'><button id='lp-button' className='lp-heading'>Recommend Me A Card Now</button></Link>
+            <Link to= '/card-recommender'><button id='lp-button' className='lp-heading'>Recommend a Card for Me Now</button></Link>
           </header>
         </div>
         <div id='care'>
