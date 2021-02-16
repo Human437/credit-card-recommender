@@ -49,19 +49,21 @@ export default class YourCards extends React.Component{
   render(){
     return(
       <>
-        <br/>
-        <ul>
-          {this.state.cards.map(card => {
-            return(
-              <li key ={card.id} id = {card.id}>
-                <Link to = {`/cards/${card.id}`}>
-                  {card.title}
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-        <p>{this.context.msg}</p>
+        <div className='result-container'>
+          <div className='card-container'>
+            {this.state.cards.map(card => {
+              return(
+                <div id = {card.id} className='card'>
+                  <img src={card.imglink} alt={card.title} className='img-for-cards'/>
+                  <h3><Link to = {`/cards/${card.id}`}>
+                    {card.title}
+                  </Link></h3>
+                </div>
+              )
+            })}
+          </div>
+          <p className='text-for-cards'>{this.context.msg}</p>
+        </div>
       </>
     )
   }
