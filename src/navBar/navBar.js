@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import Favicon from './../images/signOn/android-chrome-512x512.png'
 import './navBar.css'
+import RecommenderContext from './../recommenderContext'
 
 export default class NavBar extends React.Component{
   constructor(props){
@@ -15,12 +16,16 @@ export default class NavBar extends React.Component{
     this.setState(prevState => ({isNavShown:!prevState.isNavShown}))
   }
 
+  static contextType = RecommenderContext
+
   render(){
     const path = this.props.location.pathname
+    console.log(this.context.isSignedIn)
     let signOn;
     if (this.context.isSignedIn){
       signOn = <>
-                <button
+                <Link 
+                  to="/"
                   onClick = { e => {
                     this.context.userSignedIn(false)
                     this.context.updateUserId(null)
@@ -29,7 +34,8 @@ export default class NavBar extends React.Component{
                     this.context.updateIsFromResultsPage(false)
                   }}
                 >
-                  <Link to="/">Sign Out</Link></button>
+                  Sign Out
+                </Link>
                </>
     }else{
       signOn = <>
