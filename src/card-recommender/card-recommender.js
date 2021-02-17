@@ -142,7 +142,7 @@ export default class CardRecommender extends React.Component{
         if(this.checkLastHardInquiry(2)){
           if(this.state.creditScore.value >= 650){
             this.context.updateUserCards([7,8])
-            this.context.updateMsg('Go for the Chase Freedom Flex if you want to be more involved in the game and take advantage of the rotating categories. If you want to have a flat 1.5% back on all purchases go for the Chas Freedom Unlimited. If you already have one of the Chase Freedom Cards, apply for the one that you don\'t already have.')
+            this.context.updateMsg('Go for the Chase Freedom Flex if you want to be more involved in the game and take advantage of the rotating categories. If you want to have a flat 1.5% back on all purchases go for the Chase Freedom Unlimited. If you already have one of the Chase Freedom Cards, apply for the one that you don\'t already have.')
           }else{
             this.context.updateUserCards([7,8])
             this.context.updateMsg('You should try to raise your score up to 650 before applying for either the Chase Freedom Flex or Chase Freedom Unlimited. Although, you still may be approved with a credit score less than 650, having a score of at least 650 helps to boost your chances of being approved.')
