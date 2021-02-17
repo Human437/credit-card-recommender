@@ -35,7 +35,7 @@ export default class ShowResults extends React.Component{
           <div className='card-container'>
             {this.state.cards.map(card => {
               return(
-                <div id = {card.id} className='card'>
+                <div key = {card.id} id = {card.id} className='card'>
                   <img src={card.imglink} alt={card.title} className='img-for-cards'/>
                   <h3><Link to = {`/cards/${card.id}`}>
                     {card.title}
