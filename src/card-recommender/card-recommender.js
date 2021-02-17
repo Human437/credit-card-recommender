@@ -66,7 +66,7 @@ export default class CardRecommender extends React.Component{
     }else if(this.state.numberOfCC.value < 0 || this.state.numberOfCC.value > 30){
       return 'You must provide a number between 0 and 30'
     }else if(this.state.numberOfCC.value >=5){
-      return 'This tool was designed with beginners in mind and does not account for factors that those who are more advanced in the game may take into consideration. Since you have at least 5 cards, it is likely this tool will not be able to make a suitable recommendation.'
+      return 'This tool was designed with beginners in mind and does not account for factors that those who are more advanced in the game may take into consideration. Since you have at least 5 cards, this tool will not be able to make a suitable recommendation.'
     }
   }
 
@@ -142,10 +142,10 @@ export default class CardRecommender extends React.Component{
         if(this.checkLastHardInquiry(2)){
           if(this.state.creditScore.value >= 650){
             this.context.updateUserCards([7,8])
-            this.context.updateMsg('Go for the Chase Freedom Flex if you want to be more envolved in the game and take advantage of the rotating categories. If you want to have a flat 1.5% back on all purchases go for the Chas Freedom Unlimited. If you already have one of the Chase Freedom Cards, apply for the one that you don\'t already have.')
+            this.context.updateMsg('Go for the Chase Freedom Flex if you want to be more involved in the game and take advantage of the rotating categories. If you want to have a flat 1.5% back on all purchases go for the Chas Freedom Unlimited. If you already have one of the Chase Freedom Cards, apply for the one that you don\'t already have.')
           }else{
             this.context.updateUserCards([7,8])
-            this.context.updateMsg('You should try to raise your score up to 650 before applying for either the Chase Freedom Flex or Chase Freedom Unlimited. Although, you stil may be approved with a credit score less than 650, having a score of at least 650 helps to boost your chances of being approved.')
+            this.context.updateMsg('You should try to raise your score up to 650 before applying for either the Chase Freedom Flex or Chase Freedom Unlimited. Although, you still may be approved with a credit score less than 650, having a score of at least 650 helps to boost your chances of being approved.')
           }
         }else{
           this.context.updateUserCards([])
@@ -157,14 +157,14 @@ export default class CardRecommender extends React.Component{
           if(this.state.annualIncome.value > 30000){
             if(this.state.creditScore.value >= 700){
               this.context.updateUserCards([2,3])
-              this.context.updateMsg('Go for the Chase Sapphire Preferred if you don\'t travel much now, but may want to in the future or if you don\'t think your yearly spend justifies paying the $550 annual fee for the Chase Sapphire Reserved. Go for the Chase Sapphire Reserved if you think that you can take advantage of all the benefits to justify the high annual fee.')
+              this.context.updateMsg('Go for the Chase Sapphire Preferred if you don\'t travel much now, but may want to in the future or if you don\'t think your yearly spend justifies paying the $550 annual fee for the Chase Sapphire Reserve. Go for the Chase Sapphire Reserved if you think that you can take advantage of all the benefits to justify the high annual fee.')
             }else{
               this.context.updateUserCards([2,3])
-              this.context.updateMsg('You should try to raise your score up to 700 before applying for either the Chase Sapphire Preferred or Chase Sapphire Reserved. Although, you stil may be approved with a credit score less than 700, having a score of at least 700 helps to boost your chances of being approved.')
+              this.context.updateMsg('You should try to raise your score to 700 before applying for either the Chase Sapphire Preferred or Chase Sapphire Reserve. Although, you still may be approved with a credit score less than 700, having a score of at least 700 helps to boost your chances of being approved.')
             }
           }else{
             this.context.updateUserCards([2,3])
-            this.context.updateMsg('Typically annaul income does not play that big of a role in whether or not you can get approved for a credit card, but in case where issuers will have to give you a high credit limit, annual income comes into play. That said you do not meet the bear minimum cut off to be accepted which tends to hover around $30,000. You can choose to lie on your application, but it is not recommended as it can lead to shut down by the issuer and a potential ban.')
+            this.context.updateMsg('Typically annual income does not play that big of a role in whether or not you can get approved for a credit card, but in the case where issuers will have to give you a high credit limit, annual income comes into play. That said you do not meet the bare minimum cut-off to be accepted which tends to hover around $30,000. You can choose to lie on your application, but it is not recommended as it can lead to your account getting shut down by the issuer and a potential ban.')
           }
         }else{
           this.context.updateUserCards([])
@@ -179,11 +179,11 @@ export default class CardRecommender extends React.Component{
               this.context.updateMsg('After getting all your non-business Chase cards, it is a good idea to start branching out to other issuers to take advantage of the benefits they have to offer. American Express is a good issuer to start with. Go for the American Express Gold Card if you don\'t travel much now, but may want to in the future or if you don\'t think your yearly spend justifies paying the $550 annual fee for the American Express Platinum Card. Go for the American Express Platinum Card if you think that you can take advantage of all the benefits to justify the high annual fee.')
             }else{
               this.context.updateUserCards([5,6])
-              this.context.updateMsg('You should try to raise your score up to 700 before applying for either the American Express Gold Card or American Express Platinum Card. Although, you stil may be approved with a credit score less than 700, having a score of at least 700 helps to boost your chances of being approved.')
+              this.context.updateMsg('You should try to raise your score up to 700 before applying for either the American Express Gold Card or American Express Platinum Card. Although, you still may be approved with a credit score less than 700, having a score of at least 700 helps to boost your chances of being approved.')
             }
           }else{
             this.context.updateUserCards([5,6])
-            this.context.updateMsg('Typically annaul income does not play that big of a role in whether or not you can get approved for a credit card, but in case where issuers will have to give you a high credit limit, annual income comes into play. That said you do not meet the bear minimum cut off to be accepted which tends to hover around $30,000. You can choose to lie on your application, but it is not recommended as it can lead to shut down by the issuer and a potential ban.')
+            this.context.updateMsg('Typically annual income does not play that big of a role in whether or not you can get approved for a credit card, but in the case where issuers will have to give you a high credit limit, annual income comes into play. That said you do not meet the bare minimum cut-off to be accepted which tends to hover around $30,000. You can choose to lie on your application, but it is not recommended as it can lead to your account getting shut down by the issuer and a potential ban.')
           }
         }else{
           this.context.updateUserCards([])
