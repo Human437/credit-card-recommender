@@ -20,7 +20,6 @@ export default class NavBar extends React.Component{
 
   render(){
     const path = this.props.location.pathname
-    console.log(this.context.isSignedIn)
     let signOn;
     if (this.context.isSignedIn){
       signOn = <>
