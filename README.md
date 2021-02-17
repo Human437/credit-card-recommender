@@ -26,3 +26,17 @@ To check out the app, you can create your own account and get a credit card reco
 
 ### Back-end
 This client should be used in conjunction with the API made for this project which can be found [here](https://github.com/Human437/credit-card-recommender-api).
+
+### Try it for yourself
+You will need to have the API running in order to try the project  
+
+Run `npm install` to get all the dependencies you need for the project  
+
+Create a `.env.local` file and populate it to test locally
+
+````
+REACT_APP_BEARER_TOKEN=INSERT YOUR TOKEN HERE
+REACT_APP_API_User_ENDPOINT=INSERT YOUR USER ENDPOINT HERE
+REACT_APP_API_Cards_ENDPOINT=INSERT YOUR CARDS ENDPOINT HERE
+````
+To deploy to Vercel run `npm run deploy`
