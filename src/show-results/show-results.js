@@ -27,8 +27,42 @@ export default class ShowResults extends React.Component{
     Promise.all(results)
     .then(response => this.setState({cards:response}))
   }
+
+  handleUpdateUserCards(event){
+    fetch(`${config.API_User_ENDPOINT}/${this.context.userId}`, {
+      method: 'PATCH',
+      headers: new Headers({
+        'Authorization': `Bearer ${config.BEARER_TOKEN}`,
+        'content-type': 'application/json',
+      }),
+      body: JSON.stringify({
+        usercards: this.context.userCards,
+        msg: this.context.msg
+      })
+    })
+    .then(response =>{
+      this.props.history.push(`/your-cards/${this.context.userId}`)
+    })
+  }
   
   render(){
+    let signOn = <>
+                    <h2 id='save-results'>Sign on to save your results</h2>
+                    <button 
+                      id ='results-button'
+                      onClick = {(e) =>{this.context.updateIsFromResultsPage(true)}}
+                    >
+                      <Link to="/sign-in">Sign On</Link>
+                    </button>
+                  </>
+    if (this.context.isSignedIn){
+      signOn = <button 
+                  id ='results-button'
+                  onClick = {(e) =>{this.handleUpdateUserCards()}}
+                >
+                  Update My Recomendations
+                </button>
+    }
     return(
       <>
         <div className='result-container'>
@@ -45,14 +79,8 @@ export default class ShowResults extends React.Component{
             })}
           </div>
           <p className='text-for-cards'>{this.context.msg}</p>
-          <h2 id='save-results'>Sign on to save your results</h2>
         </div>
-        <button 
-          id ='results-button'
-          onClick = {(e) =>{this.context.updateIsFromResultsPage(true)}}
-        >
-          <Link to="/sign-in">Sign On</Link>
-        </button>
+        {signOn}
       </>
     )
   }
