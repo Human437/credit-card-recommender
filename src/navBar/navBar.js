@@ -46,7 +46,7 @@ export default class NavBar extends React.Component{
                   <div className="logo"><Link to="/"><img src ={Favicon} alt='credit card icon' id='nav-icon' width='37px'/></Link></div>
                   <ul className="nav-links">
                     <li><Link to= '/card-recommender'>Recommendation Tool</Link></li>
-                    <li><Link to= '/articles'>Articles</Link></li>
+                    {/* <li><Link to= '/articles'>Articles</Link></li> */}
                     <li><Link to= '/your-cards/:id'>Your Cards</Link></li>
                     {signOn}
                   </ul>
