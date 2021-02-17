@@ -29,8 +29,8 @@ class App extends React.Component {
     }
   }
 
-  userSignedIn= () => {
-    this.setState({isSignedIn:true})
+  userSignedIn= (state) => {
+    this.setState({isSignedIn:state})
   }
 
   updateUserId = (id) => {
@@ -70,55 +70,48 @@ class App extends React.Component {
           updateIsFromResultsPage: this.updateIsFromResultsPage
         }}
       >
-        <Route
-          path = '/'
-          component ={NavBar}
-        />
-        <Route
-          exact path = '/'
-          component ={HomePage}
-        />
-        <Route
-          path = '/card-recommender'
-          component = {CardRecommender}
-        />
-        <Route
-          exact path = '/articles'
-          component = {Articles}
-        />
-        <ProtectedYourCards 
-          path='/your-cards/:id' 
-          component={YourCards}
-        />
-        <Route 
-          path = '/sign-in'
-          component = {SignIn}
-        />
-        <Route
-          path = '/sign-up'
-          component = {SignUp}
-        />
-        <Route
-          path = '/articles/:id'
-          component = {Article}
-        />
-        <Route
-          path = '/cards/:id'
-          component = {Card}
-        />
-        <Route
-          path = '/view-results'
-          component = {ShowResults}
-        />
-          <div id ='icon-container'>
-            <span>Check me out:</span>
-            <div className='icons github'>
-              <a href="https://github.com/human437" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
-            </div>
-            <div className='icons linkedin'>
-              <a href="https://www.linkedin.com/in/yuenhigh-lee/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
-            </div>
-          </div>
+        <main>
+          <Route
+            path = '/'
+            component ={NavBar}
+          />
+          <Route
+            exact path = '/'
+            component ={HomePage}
+          />
+          <Route
+            path = '/card-recommender'
+            component = {CardRecommender}
+          />
+          <Route
+            exact path = '/articles'
+            component = {Articles}
+          />
+          <ProtectedYourCards 
+            path='/your-cards/:id' 
+            component={YourCards}
+          />
+          <Route 
+            path = '/sign-in'
+            component = {SignIn}
+          />
+          <Route
+            path = '/sign-up'
+            component = {SignUp}
+          />
+          <Route
+            path = '/articles/:id'
+            component = {Article}
+          />
+          <Route
+            path = '/cards/:id'
+            component = {Card}
+          />
+          <Route
+            path = '/view-results'
+            component = {ShowResults}
+          />
+        </main>
       </RecommenderContext.Provider>
     )
   }

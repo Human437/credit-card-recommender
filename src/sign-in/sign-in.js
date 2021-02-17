@@ -70,7 +70,7 @@ export default class SignIn extends React.Component{
             return
           }
           if(res){
-            this.context.userSignedIn()
+            this.context.userSignedIn(true)
             this.context.updateUserId(json.id)
             if (this.context.isFromResultsPage){
               this.context.updateIsFromResultsPage(false)

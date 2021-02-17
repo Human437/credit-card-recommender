@@ -114,7 +114,7 @@ export default class SignUp extends React.Component{
           })
           .then(response => response.json())
           .then(data =>{
-            this.context.userSignedIn()
+            this.context.userSignedIn(true)
             this.context.updateUserId(data.id);
             if (this.context.userCards.length === 0){
               this.props.history.push(`/card-recommender`)
