@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import './articles.css'
 import RecommenderContext from './../recommenderContext'
 import config from './../config'
+import PlaceholderImg from './../images/placeholder.png'
 
 export default class Articles extends React.Component {
   constructor(props){
@@ -28,19 +29,27 @@ export default class Articles extends React.Component {
   render(){
     return(
       <>
-        <ul>
-          {this.state.articles.map(article =>{
+        <div className ='articles-container'>
+          {this.state.articles.map((article,index) =>{
             return(
-              <li key = {article.id} id = {article.id}>
-                <Link
-                  to = {`/articles/${article.id}`}
-                >
-                  {article.title}
-                </Link>
-              </li>
+              <div key = {article.id} id = {article.id} className='articles'>
+                <div className={`articles-text-content ${index%2===0?'':'text-first'}`}>
+                  <h2>
+                    <Link
+                      to = {`/articles/${article.id}`}
+                    >
+                      {article.title}
+                    </Link>
+                  </h2>
+                  <h5>{`Updated: article date`}</h5>
+                  
+                  <p>Starting text of article</p>
+                </div>
+                <img src={PlaceholderImg} alt='placeholder' className='articles-img'/>
+              </div>
             )
           })}
-        </ul>
+        </div>
       </>
     )
   }
