@@ -19,7 +19,6 @@ class App extends React.Component {
     super(props);
     this.state ={
       isSignedIn: false,
-      theme: 'light',
       articles: [],
       availableCards: [],
       userCards: [],
@@ -50,13 +49,10 @@ class App extends React.Component {
   }
 
   render(){
-    document.getElementById('root').className = this.state.theme
-
     return(
       <RecommenderContext.Provider
         value = {{
           isSignedIn:this.state.isSignedIn,
-          theme: this.state.theme,
           articles: this.state.articles,
           availableCards: this.state.availableCards,
           userSignedIn: this.userSignedIn,
