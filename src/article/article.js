@@ -8,7 +8,7 @@ export default class Article extends React.Component{
     this.state = {
       article: {}
     }
-    this.selectedArticleId = props.match.params.id;
+    this.selectedArticleId = this.props.match.params.id;
   }
 
   componentDidMount(){
