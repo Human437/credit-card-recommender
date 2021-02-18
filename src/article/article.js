@@ -1,33 +1,33 @@
-import React from 'react'
-import './article.css'
-import config from './../config'
+import React from "react";
+import "./article.css";
+import config from "./../config";
 
-export default class Article extends React.Component{
-  constructor(props){
-    super(props)
+export default class Article extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      article: {}
-    }
+      article: {},
+    };
     this.selectedArticleId = this.props.match.params.id;
   }
 
-  componentDidMount(){
+  componentDidMount() {
     fetch(`${config.API_Articles_ENDPOINT}/${this.selectedArticleId}`, {
-      method: 'get',
+      method: "get",
       headers: new Headers({
-        'Authorization': `Bearer ${config.BEARER_TOKEN}`
-      })
+        Authorization: `Bearer ${config.BEARER_TOKEN}`,
+      }),
     })
-    .then(response => response.json())
-    .then(data => this.setState({article:data}))
+      .then((response) => response.json())
+      .then((data) => this.setState({ article: data }));
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <>
         <h1>{this.state.article.title}</h1>
         <p>{this.state.article.content}</p>
       </>
-    )
+    );
   }
 }
